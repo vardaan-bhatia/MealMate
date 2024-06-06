@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   margin: 0;
   padding: 0;
@@ -82,42 +83,36 @@ body {
   font-size: larger;
 }
 
+/* Mind Section Styles */
 .Mindtop {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.round-container {
+.mind-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
-.round-pair {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mind-item {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 220px;
+  margin: 0 10px;
+
   transition: transform 0.2s ease;
 }
 
-.round-pair:hover {
+.mind-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.mind-item:hover {
   transform: scale(1.1);
-}
-
-.round {
-  height: 120px;
-  width: 120px;
-  background-color: gray;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.Mindtop p {
-  margin: 0;
-  font-weight: bold;
-  font-size: larger;
 }
 
 .fcontainer {
@@ -178,6 +173,7 @@ h1 {
   color: #555;
 }
 
+/* Footer Styles */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 .footermain {
