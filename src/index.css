@@ -1,7 +1,9 @@
 body {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
+
 .header {
   display: flex;
   align-items: center;
@@ -27,7 +29,6 @@ body {
   margin-left: 5px;
   font-size: x-large;
   font-weight: bold;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .search-box {
@@ -76,19 +77,64 @@ body {
   font-weight: bold;
   font-size: larger;
 }
+
 .glass {
   font-size: larger;
 }
+
+.Mindtop {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.round-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.round-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.round-pair:hover {
+  transform: scale(1.1);
+}
+
+.round {
+  height: 120px;
+  width: 120px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.Mindtop p {
+  margin: 0;
+  font-weight: bold;
+  font-size: larger;
+}
+
 .fcontainer {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 50px;
+  margin-left: 58px;
 }
 
 h1 {
   font-size: 24px;
   margin-left: 75px;
   margin-top: 50px;
+}
+
+.mindh1 {
+  font-size: 24px;
+  margin: 18px;
 }
 
 .card {
@@ -131,6 +177,7 @@ h1 {
   margin: 5px 0;
   color: #555;
 }
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 .footermain {
@@ -229,6 +276,7 @@ h1 {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
 .logo-text {
   display: flex;
   align-items: center;
