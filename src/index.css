@@ -1,8 +1,10 @@
-/* General Styles */
+html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
 }
 
 .header {
@@ -90,29 +92,17 @@ body {
 }
 
 .mind-container {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px 0;
-  margin-left: 250px;
-  margin-right: 250px;
+  margin: 0 auto;
+  width: 60%;
 }
 
 .mind-item {
-  flex: 0 0 auto;
-  width: 180px;
-  height: 220px;
-  margin: 0 10px;
-
-  transition: transform 0.2s ease;
+  width: 100%;
 }
 
 .mind-item img {
   width: 100%;
-  height: 100%;
-}
-
-.mind-item:hover {
-  transform: scale(1.1);
+  height: auto;
 }
 
 .fcontainer {
@@ -123,13 +113,23 @@ body {
 
 h1 {
   font-size: 24px;
-  margin-left: 75px;
+  text-align: center;
   margin-top: 50px;
 }
 
-.mindh1 {
-  font-size: 24px;
-  margin: 18px;
+.f1main {
+  width: 100%;
+  font-size: 27px;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-left: 75px;
+}
+
+.mind-heading {
+  font-size: 27px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .card {
@@ -281,4 +281,28 @@ h1 {
 .logo-text strong {
   margin-left: 10px;
   font-size: 1.25rem;
+}
+
+/* Slick Slider Custom Arrow Styles */
+.slick-prev,
+.slick-next {
+  background-color: #e1e1e6; /* Set the background color to match the arrow */
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #c7c8cc; /* Change the background color on hover */
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-70%);
+  font-size: 2rem;
+  background-color: #e1e1e6; /* Set the background color to match the arrow */
+  color: black; /* Set the color of the arrow to black */
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1; /* Ensure the arrows are above the images */
 }

@@ -5,9 +5,8 @@ const Footer = () => {
     <div className="footermain">
       <div className="playstore">
         <h1>
-          For better experience,
-          <br />
-          download the <span>MealMate app</span> now
+          For better experience, download the <br />
+          <span>MealMate app</span> now
         </h1>
         <div className="download">
           <a
