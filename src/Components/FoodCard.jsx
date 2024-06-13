@@ -1,4 +1,5 @@
 import React from "react";
+import "../CSS/FoodCard.css";
 
 const FoodCard = ({ restaurant }) => {
   const { name, sla, costForTwo, avgRatingString, cloudinaryImageId } =

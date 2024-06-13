@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+.footermain {
+  font-family: "Roboto", sans-serif;
+}
+
+.playstore {
+  height: 115px;
+  width: 100%;
+  background-color: #f0f0f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  box-sizing: border-box;
+  margin-top: 32px;
+}
+
+.playstore > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.playstore > h1 > span {
+  color: #ff9000;
+}
+
+.playstore-img {
+  width: 200px;
+  margin-left: 30px;
+  height: 62px;
+}
+
+.end {
+  padding: 20px 10%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+}
+
+.enddiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 50px;
+  margin-right: 20px;
+}
+
+.company-details {
+  flex-grow: 1;
+}
+
+.company-details > strong {
+  font-size: 1.25rem;
+  display: block;
+}
+
+.list-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.list-section {
+  margin: 0 20px;
+}
+
+.list-section strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.list-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-section ul li {
+  margin: 5px 0;
+  color: #9a9b9e;
+  cursor: pointer;
+}
+
+.cities-dropdown {
+  width: 100px;
+  margin-top: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text strong {
+  margin-left: 10px;
+  font-size: 1.25rem;
+}

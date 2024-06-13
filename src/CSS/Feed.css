@@ -1,0 +1,56 @@
+.mind-heading {
+  font-size: 27px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.mind-container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.mind-item {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.mind-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.mind-item:hover img {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.mind-item::before {
+  content: "";
+  display: block;
+  padding-top: 125%;
+}
+
+.mind-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 58px;
+}
+
+.f1main {
+  width: 100%;
+  font-size: 27px;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-left: 75px;
+}

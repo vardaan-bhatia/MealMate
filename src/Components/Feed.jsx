@@ -6,6 +6,8 @@ import mind from "../utils/mindobj";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../CSS/Feed.css";
+import "../CSS/SlickCustom.css";
 
 const Feed = () => {
   const mindSettings = {

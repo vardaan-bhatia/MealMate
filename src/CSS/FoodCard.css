@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 350px;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s linear, box-shadow 0.1s ease;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card > img {
+  width: 100%;
+  height: 55%;
+}
+
+.ftext {
+  padding: 15px;
+  text-align: center;
+}
+
+.ftext h2 {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.ftext p {
+  margin: 5px 0;
+  color: #555;
+}
