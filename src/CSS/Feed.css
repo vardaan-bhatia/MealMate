@@ -47,10 +47,19 @@
   margin-left: 58px;
 }
 
-.f1main {
-  width: 100%;
-  font-size: 27px;
-  text-align: left;
+.filter-container {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
   margin-left: 75px;
+}
+
+.f1main {
+  font-size: 27px;
+  margin-right: 15px;
+}
+
+select {
+  padding: 5px;
+  font-size: 14px;
 }

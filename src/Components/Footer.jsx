@@ -51,9 +51,9 @@ const Footer = () => {
                   <li>About</li>
                   <li>Careers</li>
                   <li>Team</li>
-                  <li>Swiggy One</li>
-                  <li>Swiggy Instamart</li>
-                  <li>Swiggy Genie</li>
+                  <li>MealMate One</li>
+                  <li>MealMate Instamart</li>
+                  <li>MealMate Genie</li>
                 </ul>
               </div>
               <div className="list-section">
@@ -88,11 +88,14 @@ const Footer = () => {
                   id="cities-dropdown"
                   className="cities-dropdown"
                 >
-                  <option value="bangalore">Bangalore</option>
-                  <option value="noida">Noida</option>
-                  <option value="pune">Pune</option>
-                  <option value="kolkata">Kolkata</option>
-                  <option value="delhi">Delhi</option>
+                  <option value="mumbai">Mumbai</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="hyderabad">Hyderabad</option>
+                  <option value="ahmedabad">Ahmedabad</option>
+                  <option value="indore">Indore</option>
+                  <option value="lucknow">Lucknow</option>
+                  <option value="kanpur">Kanpur</option>
+                  <option value="jaipur">Jaipur</option>
                 </select>
               </div>
             </div>

@@ -90,9 +90,9 @@
 }
 
 .cities-dropdown {
-  width: 100px;
+  width: 100%;
   margin-top: 2px;
-  padding: 5px;
+  padding: 3px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
