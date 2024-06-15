@@ -1,54 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
-import DishCard from "./DishCard";
 import resobj from "../utils/resobj";
 import mind from "../utils/mindobj";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
-import "../CSS/SlickCustom.css";
 
 const Feed = () => {
-  const mindSettings = {
-    dots: false,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    nextArrow: <div className="slick-arrow slick-next"></div>,
-    prevArrow: <div className="slick-arrow slick-prev"></div>,
-  };
   const [listres, setlistres] = useState(resobj);
-  const FilterRating = () => {
+
+  const filterRating = () => {
     const filterR = listres.filter((r) => r.info.avgRating > 4.4);
     setlistres(filterR);
   };
-  const FilterTime = () => {
+
+  const filterTime = () => {
     const filterT = listres.filter((t) => t.info.sla.deliveryTime < 25);
     setlistres(filterT);
   };
+
   const handleFilterChange = (e) => {
-    const filtertype = e.target.value;
-    if (filtertype === "rating") {
-      FilterRating();
+    const filterType = e.target.value;
+    if (filterType === "rating") {
+      filterRating();
     } else {
-      FilterTime();
+      filterTime();
     }
   };
 
+  useEffect(() => {
+    console.log("Component did update");
+  }, [listres]);
+
   return (
     <>
-      <h1 className="mind-heading">What's on your mind?</h1>
-      <Slider {...mindSettings} className="mind-container">
-        {mind.map((e) =>
-          e.info && e.info.id ? (
-            <DishCard boxes={e} key={e.info.id} />
-          ) : (
-            console.error("Invalid object structure in mind array:", e)
-          )
-        )}
-      </Slider>
+      <MindSlider mind={mind} />
       <div className="filter-container">
         <h1 className="f1main">Top restaurant chains in Patiala</h1>
         <select onChange={handleFilterChange}>
