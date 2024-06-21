@@ -1,7 +1,10 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "../CSS/Navbar.css";
 
 const Navbar = () => {
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+
   return (
     <div className="header">
       <div className="logo-box">
@@ -35,8 +38,17 @@ const Navbar = () => {
           <li>
             <i className="fa-solid fa-cart-shopping"></i> Cart
           </li>
-          <li>
-            <i className="fa-solid fa-user"></i> Sign In
+          <li
+            onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
+          >
+            {isAuthenticated ? (
+              `Welcome, ${user.name}`
+            ) : (
+              <>
+                <i className="fa-solid fa-user"></i>
+                Sign In
+              </>
+            )}
           </li>
         </ul>
       </div>

@@ -3,10 +3,12 @@ import axios from "axios";
 import FoodCard from "./FoodCard";
 import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
-import livedata from "../utils/livedata";
 
 const Feed = () => {
   const [listres, setlistres] = useState([]);
+  const [originalList, setOriginalList] = useState([]); // Store original list of restaurants
+  const [filterType, setFilterType] = useState(""); // State to store selected filter type
+  const [minddata, setMindData] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -14,55 +16,85 @@ const Feed = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const response = await axios.get(process.env.REACT_APP_API_URL);
       const restaurants =
         response?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
       setlistres(restaurants);
+      setOriginalList(restaurants); // Store original list
+
+      const dishdata =
+        response?.data?.data?.cards[0]?.card?.card?.imageGridCards?.info || [];
+      setMindData(dishdata);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const filterRating = () => {
-    const filterR = listres.filter((r) => r.info.avgRating > 4.4);
-    setlistres(filterR);
+  const filterByRating = (rating, high) => {
+    const filteredList = originalList.filter(
+      (restaurant) =>
+        high > restaurant.info.avgRating && rating <= restaurant.info.avgRating
+    );
+    setlistres(filteredList);
   };
 
-  const filterTime = () => {
-    const filterT = listres.filter((t) => t.info.sla.deliveryTime < 25);
-    setlistres(filterT);
+  const filterByDeliveryTime = (time) => {
+    const filteredList = originalList.filter(
+      (restaurant) => restaurant.info.sla.deliveryTime < time
+    );
+    setlistres(filteredList);
   };
 
   const handleFilterChange = (e) => {
-    const filterType = e.target.value;
-    if (filterType === "rating") {
-      filterRating();
-    } else if (filterType === "time") {
-      filterTime();
+    const selectedFilter = e.target.value;
+    setFilterType(selectedFilter);
+
+    switch (selectedFilter) {
+      case "4.5":
+        filterByRating(4.5, 5.0);
+        break;
+      case "4.0":
+        filterByRating(4.0, 4.5);
+        break;
+      case "3.0":
+        filterByRating(3.0, 4.0);
+        break;
+      case "40":
+        filterByDeliveryTime(40);
+        break;
+      case "30":
+        filterByDeliveryTime(30);
+        break;
+      default:
+        setlistres(originalList); // Reset to original list if no filter selected
+        break;
     }
   };
-
   return (
     <>
-      <MindSlider mind={livedata.data.cards[0].card.card.imageGridCards.info} />
+      <MindSlider mind={minddata} />
       <div className="filter-container">
         <h1 className="f1main">Top restaurant chains in Patiala</h1>
-        <select onChange={handleFilterChange}>
+        <select value={filterType} onChange={handleFilterChange}>
           <option value="">Select filter...</option>
-          <option value="rating">Filter by Rating</option>
-          <option value="time">Filter by Delivery Time</option>
+          <option value="4.5">Ratings 4.5+</option>
+          <option value="4.0">⭐⭐⭐⭐</option>
+          <option value="3.0">⭐⭐⭐</option>
+          <option value="40">Delivery Time ≤ 40 mins</option>
+          <option value="30">Delivery Time ≤ 30 mins</option>
         </select>
       </div>
       <div className="fcontainer">
         {listres.length > 0 ? (
-          listres.map((u, index) =>
-            u.info && u.info.id ? (
-              <FoodCard restaurant={u} key={index} />
+          listres.map((restaurant, index) =>
+            restaurant.info && restaurant.info.id ? (
+              <FoodCard restaurant={restaurant} key={index} />
             ) : (
-              console.error("Invalid object structure in resobj array:", u)
+              console.error(
+                "Invalid object structure in restaurant array:",
+                restaurant
+              )
             )
           )
         ) : (
