@@ -1,50 +1,38 @@
-import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import FoodCard from "./FoodCard";
 import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
 import livedata from "../utils/livedata";
 
 const Feed = () => {
-  const initialRestaurants =
-    livedata.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
-  const [listres, setlistres] = useState(initialRestaurants);
+  const [listres, setlistres] = useState([]);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("/api", {
-  //       params: {
-  //         lat: 30.7339,
-  //         lng: 76.7889,
-  //         isSeoHomepageEnabled: true,
-  //         page_type: "DESKTOP_WEB_LISTING",
-  //       },
-  //     });
-  //     const main = response.data;
-  //     console.log(main);
-  //     if (main.data && main.data.cards && main.data.cards.length > 2) {
-  //       const restaurants =
-  //         main.data.cards[2].card.card.gridElements.infoWithStyle.restaurants;
-  //       setlistres(restaurants);
-  //     } else {
-  //       console.error("Unexpected data structure in API response:", main);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching data from local API:", error);
-  //   }
-  // };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const restaurants =
+        response?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+      setlistres(restaurants);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const filterRating = () => {
-    const filterR = listres.filter((r) => r.info.avgRating > 4);
+    const filterR = listres.filter((r) => r.info.avgRating > 4.4);
     setlistres(filterR);
   };
 
   const filterTime = () => {
-    const filterT = listres.filter((t) => t.info.sla.deliveryTime < 30);
+    const filterT = listres.filter((t) => t.info.sla.deliveryTime < 25);
     setlistres(filterT);
   };
 
@@ -52,7 +40,7 @@ const Feed = () => {
     const filterType = e.target.value;
     if (filterType === "rating") {
       filterRating();
-    } else {
+    } else if (filterType === "time") {
       filterTime();
     }
   };
