@@ -40,9 +40,17 @@ const Navbar = () => {
           </li>
           <li
             onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
+            className="signin"
           >
             {isAuthenticated ? (
-              `Welcome, ${user.name}`
+              <div className="user-profile">
+                <img
+                  src={user.picture}
+                  alt={user.name}
+                  className="user-avatar"
+                />
+                <span className="user-name">Welcome, {user.name}</span>
+              </div>
             ) : (
               <>
                 <i className="fa-solid fa-user"></i>

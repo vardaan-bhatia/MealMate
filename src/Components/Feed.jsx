@@ -10,10 +10,6 @@ const Feed = () => {
   const [filterType, setFilterType] = useState(""); // State to store selected filter type
   const [minddata, setMindData] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL);
@@ -34,14 +30,14 @@ const Feed = () => {
   const filterByRating = (rating, high) => {
     const filteredList = originalList.filter(
       (restaurant) =>
-        high > restaurant.info.avgRating && rating <= restaurant.info.avgRating
+        rating <= restaurant.info.avgRating && high > restaurant.info.avgRating
     );
     setlistres(filteredList);
   };
 
   const filterByDeliveryTime = (time) => {
     const filteredList = originalList.filter(
-      (restaurant) => restaurant.info.sla.deliveryTime < time
+      (restaurant) => restaurant.info.sla.deliveryTime <= time
     );
     setlistres(filteredList);
   };
@@ -71,6 +67,11 @@ const Feed = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <MindSlider mind={minddata} />
