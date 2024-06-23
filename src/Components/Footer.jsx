@@ -1,7 +1,7 @@
 import React from "react";
 import "../CSS/Footer.css";
 
-const Footer = () => {
+const Footer = ({ Mumbai }) => {
   return (
     <div className="footermain">
       <div className="playstore">
@@ -77,25 +77,29 @@ const Footer = () => {
               <div className="list-section">
                 <strong>We deliver to:</strong>
                 <ul>
-                  <li>Banglore</li>
-                  <li>Noida</li>
-                  <li>Pune</li>
-                  <li>Kolkata</li>
-                  <li>Delhi</li>
+                  {Array.isArray(Mumbai) && Mumbai.length > 0 ? (
+                    Mumbai.slice(0, 5).map((city, index) => (
+                      <li key={index}>{city.text}</li>
+                    ))
+                  ) : (
+                    <li>No cities available</li>
+                  )}
                 </ul>
                 <select
                   name="cities"
                   id="cities-dropdown"
                   className="cities-dropdown"
                 >
-                  <option value="mumbai">Mumbai</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="ahmedabad">Ahmedabad</option>
-                  <option value="indore">Indore</option>
-                  <option value="lucknow">Lucknow</option>
-                  <option value="kanpur">Kanpur</option>
-                  <option value="jaipur">Jaipur</option>
+                  <option value="">More cities...</option>
+                  {Array.isArray(Mumbai) && Mumbai.length > 0 ? (
+                    Mumbai.slice(5).map((city, index) => (
+                      <option key={index} value={city.text}>
+                        {city.text}
+                      </option>
+                    ))
+                  ) : (
+                    <option value="">No cities available</option>
+                  )}
                 </select>
               </div>
             </div>

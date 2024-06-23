@@ -10,7 +10,7 @@ const Navbar = ({ onsearch }) => {
     onsearch(SearchText);
   };
   const keypress = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       Searchfunction();
     }
   };

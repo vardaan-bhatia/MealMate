@@ -73,8 +73,8 @@ select {
 }
 
 .shimmerUI {
-  height: 300px; /* Adjusted height for better proportions */
-  width: 240px; /* Adjusted width for better proportions */
+  height: 270px;
+  width: 240px;
   background: linear-gradient(
     to right,
     #f0f0f0 0%,

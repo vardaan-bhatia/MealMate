@@ -13,6 +13,7 @@ const Feed = () => {
   const [filterType, setFilterType] = useState(""); // State to store selected filter type
   const [minddata, setMindData] = useState([]);
   const [title, setTitle] = useState("");
+  const [cities, setCities] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -30,6 +31,10 @@ const Feed = () => {
       const titleheading =
         response?.data?.data?.cards[1]?.card?.card?.header?.title || "";
       setTitle(titleheading);
+
+      const citiData =
+        response?.data?.data?.cards[10]?.card?.card?.cities || [];
+      setCities(citiData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -91,29 +96,33 @@ const Feed = () => {
     }
   };
 
-  return listres.length == 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <>
       <Navbar onsearch={handleSearch} /> {/* Navbar of the body */}
-      <MindSlider mind={minddata} /> {/* here feed starts */}
-      <div className="filter-container">
-        <h1 className="f1main">{title}</h1>
-        <select value={filterType} onChange={handleFilterChange}>
-          <option value="">Select filter...</option>
-          <option value="4.5">Ratings 4.5+</option>
-          <option value="4.0">⭐⭐⭐⭐+</option>
-          <option value="3.0">⭐⭐⭐+</option>
-          <option value="40">Delivery Time ≤ 40 mins</option>
-          <option value="30">Delivery Time ≤ 30 mins</option>
-        </select>
-      </div>
-      <div className="fcontainer">
-        {listres.map((restaurant, index) => (
-          <FoodCard restaurant={restaurant} key={index} />
-        ))}
-      </div>
-      <Footer /> {/* this is the footer of the app */}
+      {listres.length == 0 ? (
+        <Shimmer />
+      ) : (
+        <>
+          <MindSlider mind={minddata} /> {/* here feed starts */}
+          <div className="filter-container">
+            <h1 className="f1main">{title}</h1>
+            <select value={filterType} onChange={handleFilterChange}>
+              <option value="">Select filter...</option>
+              <option value="4.5">Ratings 4.5+</option>
+              <option value="4.0">⭐⭐⭐⭐+</option>
+              <option value="3.0">⭐⭐⭐+</option>
+              <option value="40">Delivery Time ≤ 40 mins</option>
+              <option value="30">Delivery Time ≤ 30 mins</option>
+            </select>
+          </div>
+          <div className="fcontainer">
+            {listres.map((restaurant, index) => (
+              <FoodCard restaurant={restaurant} key={index} />
+            ))}
+          </div>
+          <Footer Mumbai={cities} /> {/* this is the footer of the app */}
+        </>
+      )}
     </>
   );
 };
