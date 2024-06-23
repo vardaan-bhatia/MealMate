@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FoodCard from "./FoodCard";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
+import Shimmer from "./Shimmer";
 
 const Feed = () => {
   const [listres, setlistres] = useState([]);
   const [originalList, setOriginalList] = useState([]); // Store original list of restaurants
   const [filterType, setFilterType] = useState(""); // State to store selected filter type
   const [minddata, setMindData] = useState([]);
+  const [title, setTitle] = useState("");
 
   const fetchData = async () => {
     try {
@@ -22,6 +26,10 @@ const Feed = () => {
       const dishdata =
         response?.data?.data?.cards[0]?.card?.card?.imageGridCards?.info || [];
       setMindData(dishdata);
+
+      const titleheading =
+        response?.data?.data?.cards[1]?.card?.card?.header?.title || "";
+      setTitle(titleheading);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -30,7 +38,7 @@ const Feed = () => {
   const filterByRating = (rating, high) => {
     const filteredList = originalList.filter(
       (restaurant) =>
-        rating <= restaurant.info.avgRating && high > restaurant.info.avgRating
+        rating <= restaurant.info.avgRating && restaurant.info.avgRating <= high
     );
     setlistres(filteredList);
   };
@@ -72,36 +80,40 @@ const Feed = () => {
     fetchData();
   }, []);
 
-  return (
+  const handleSearch = (text) => {
+    if (text) {
+      const showsearch = originalList.filter(
+        (e) => e.info.name.toLowerCase().includes(text.toLowerCase()) // filtering search logic
+      );
+      setlistres(showsearch);
+    } else {
+      setlistres(originalList);
+    }
+  };
+
+  return listres.length == 0 ? (
+    <Shimmer />
+  ) : (
     <>
-      <MindSlider mind={minddata} />
+      <Navbar onsearch={handleSearch} /> {/* Navbar of the body */}
+      <MindSlider mind={minddata} /> {/* here feed starts */}
       <div className="filter-container">
-        <h1 className="f1main">Top restaurant chains in Patiala</h1>
+        <h1 className="f1main">{title}</h1>
         <select value={filterType} onChange={handleFilterChange}>
           <option value="">Select filter...</option>
           <option value="4.5">Ratings 4.5+</option>
-          <option value="4.0">⭐⭐⭐⭐</option>
-          <option value="3.0">⭐⭐⭐</option>
+          <option value="4.0">⭐⭐⭐⭐+</option>
+          <option value="3.0">⭐⭐⭐+</option>
           <option value="40">Delivery Time ≤ 40 mins</option>
           <option value="30">Delivery Time ≤ 30 mins</option>
         </select>
       </div>
       <div className="fcontainer">
-        {listres.length > 0 ? (
-          listres.map((restaurant, index) =>
-            restaurant.info && restaurant.info.id ? (
-              <FoodCard restaurant={restaurant} key={index} />
-            ) : (
-              console.error(
-                "Invalid object structure in restaurant array:",
-                restaurant
-              )
-            )
-          )
-        ) : (
-          <p>Loading...</p>
-        )}
+        {listres.map((restaurant, index) => (
+          <FoodCard restaurant={restaurant} key={index} />
+        ))}
       </div>
+      <Footer /> {/* this is the footer of the app */}
     </>
   );
 };

@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../CSS/Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ onsearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  const [SearchText, setSearchText] = useState("");
 
+  const Searchfunction = () => {
+    onsearch(SearchText);
+  };
+  const keypress = (e) => {
+    if (e.key == "Enter") {
+      Searchfunction();
+    }
+  };
   return (
     <div className="header">
       <div className="logo-box">
@@ -21,36 +30,39 @@ const Navbar = () => {
           type="text"
           className="search-input"
           placeholder="Search for restaurants and food..."
+          value={SearchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          onKeyDown={keypress}
         />
-        <span className="glass">
+        <button className="glass listhov" onClick={Searchfunction}>
           <i className="fa-solid fa-magnifying-glass search-icon"></i>
-        </span>
+        </button>
       </div>
 
       <div className="nav-items">
         <ul className="list">
-          <li>
+          <li className="listhov">
             <i className="fa-solid fa-tag"></i> Offer
           </li>
-          <li>
+          <li className="listhov">
             <i className="fa-solid fa-comments"></i> Help
           </li>
-          <li>
+          <li className="listhov">
             <i className="fa-solid fa-cart-shopping"></i> Cart
           </li>
           <li
             onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}
-            className="signin"
+            className={isAuthenticated ? "user-profile listhov" : "signin"}
           >
             {isAuthenticated ? (
-              <div className="user-profile">
+              <>
                 <img
                   src={user.picture}
                   alt={user.name}
                   className="user-avatar"
                 />
                 <span className="user-name">Welcome, {user.name}</span>
-              </div>
+              </>
             ) : (
               <>
                 <i className="fa-solid fa-user"></i>

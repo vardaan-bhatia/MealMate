@@ -65,3 +65,35 @@ select {
   font-size: 14px;
   border-radius: 15px;
 }
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.shimmerUI {
+  height: 300px; /* Adjusted height for better proportions */
+  width: 240px; /* Adjusted width for better proportions */
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

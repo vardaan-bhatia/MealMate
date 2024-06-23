@@ -11,7 +11,6 @@ const FoodCard = ({ restaurant }) => {
     cloudinaryImageId,
   } = restaurant.info;
   const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/${cloudinaryImageId}`;
-
   return (
     <div className="card">
       <img src={imageUrl} alt={name} />

@@ -64,6 +64,10 @@
   padding: 0;
   margin: 0;
 }
+.listhov:hover {
+  color: #fc9037;
+  transform: translateY(-1px);
+}
 
 .list > li {
   padding: 5px 10px;
@@ -74,11 +78,16 @@
 
 .glass {
   font-size: larger;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
+
 .user-profile {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: 50px;
 }
 
 .user-avatar {
@@ -100,4 +109,8 @@
 
 .signin:hover {
   background-color: #ffbf78;
+}
+
+.signin .fa-user {
+  margin-right: 5px;
 }
