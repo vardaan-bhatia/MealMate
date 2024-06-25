@@ -1,7 +1,7 @@
 .mind-heading {
   font-size: 26px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 25px;
   margin-bottom: 10px;
 }
 
@@ -70,7 +70,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 90px;
+  margin-top: 10px;
 }
 
 .shimmerUI {

@@ -4,6 +4,7 @@ import App from "./App";
 import Offer from "./Components/Offer";
 import Help from "./Components/Help";
 import Cart from "./Components/Cart";
+import ErrorPage from "./Components/ErrorPage";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
         <Route path="/offer" element={<Offer />} />
         <Route path="/help" element={<Help />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
   );
