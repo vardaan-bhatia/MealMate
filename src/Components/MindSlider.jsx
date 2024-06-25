@@ -35,7 +35,7 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 600,
-  slidesToShow: 5,
+  slidesToShow: 6,
   slidesToScroll: 2,
   prevArrow: <SlickArrowLeft />,
   nextArrow: <SlickArrowRight />,

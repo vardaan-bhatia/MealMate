@@ -1,5 +1,6 @@
 import React from "react";
 import "../CSS/Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = ({ Mumbai }) => {
   return (
@@ -47,32 +48,38 @@ const Footer = ({ Mumbai }) => {
             <div className="list-details">
               <div className="list-section">
                 <strong>Company</strong>
-                <ul>
-                  <li>About</li>
-                  <li>Careers</li>
-                  <li>Team</li>
-                  <li>MealMate One</li>
-                  <li>MealMate Instamart</li>
-                  <li>MealMate Genie</li>
-                </ul>
+                <Link to="/help" style={{ textDecoration: "none" }}>
+                  <ul>
+                    <li>About</li>
+                    <li>Careers</li>
+                    <li>Team</li>
+                    <li>MealMate One</li>
+                    <li>MealMate Instamart</li>
+                    <li>MealMate Genie</li>
+                  </ul>
+                </Link>
               </div>
               <div className="list-section">
                 <strong>Contact Us</strong>
-                <ul>
-                  <li>Contact us</li>
-                  <li>Help & Support</li>
-                  <li>Partner with us</li>
-                  <li>Ride with us</li>
-                </ul>
+                <Link to="/help" style={{ textDecoration: "none" }}>
+                  <ul>
+                    <li>Contact us</li>
+                    <li>Help & Support</li>
+                    <li>Partner with us</li>
+                    <li>Ride with us</li>
+                  </ul>
+                </Link>
               </div>
               <div className="list-section">
                 <strong>Legal</strong>
-                <ul>
-                  <li>Terms & Conditions</li>
-                  <li>Cookie Policy</li>
-                  <li>Privacy Policy</li>
-                  <li>Investor Relations</li>
-                </ul>
+                <Link to="/help" style={{ textDecoration: "none" }}>
+                  <ul>
+                    <li>Terms & Conditions</li>
+                    <li>Cookie Policy</li>
+                    <li>Privacy Policy</li>
+                    <li>Investor Relations</li>
+                  </ul>
+                </Link>
               </div>
               <div className="list-section">
                 <strong>We deliver to:</strong>

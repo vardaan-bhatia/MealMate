@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../CSS/Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ onsearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -42,13 +43,19 @@ const Navbar = ({ onsearch }) => {
       <div className="nav-items">
         <ul className="list">
           <li className="listhov">
-            <i className="fa-solid fa-tag"></i> Offer
+            <Link to="/offer" className="listhov link">
+              <i className="fa-solid fa-tag"></i> Offer
+            </Link>
           </li>
           <li className="listhov">
-            <i className="fa-solid fa-comments"></i> Help
+            <Link to="/help" className="listhov link">
+              <i className="fa-solid fa-comments"></i> Help
+            </Link>
           </li>
           <li className="listhov">
-            <i className="fa-solid fa-cart-shopping"></i> Cart
+            <Link to="/cart" className="listhov link">
+              <i className="fa-solid fa-cart-shopping"></i> Cart
+            </Link>
           </li>
           <li
             onClick={() => (isAuthenticated ? logout() : loginWithRedirect())}

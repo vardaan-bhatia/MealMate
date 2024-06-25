@@ -69,11 +69,8 @@ const Feed = () => {
       case "3.0":
         filterByRating(3.0, 4.0);
         break;
-      case "40":
-        filterByDeliveryTime(40);
-        break;
       case "30":
-        filterByDeliveryTime(30);
+        filterByDeliveryTime(35);
         break;
       default:
         setlistres(originalList); // Reset to original list if no filter selected
@@ -87,9 +84,18 @@ const Feed = () => {
 
   const handleSearch = (text) => {
     if (text) {
-      const showsearch = originalList.filter(
-        (e) => e.info.name.toLowerCase().includes(text.toLowerCase()) // filtering search logic
-      );
+      const showsearch = originalList.filter((e) => {
+        const restaurantNameMatches = e.info.name
+          .toLowerCase()
+          .includes(text.toLowerCase());
+        const cuisinesIncludeText =
+          Array.isArray(e.info.cuisines) &&
+          e.info.cuisines.some((cuisine) =>
+            cuisine.toLowerCase().includes(text.toLowerCase())
+          );
+
+        return restaurantNameMatches || cuisinesIncludeText;
+      });
       setlistres(showsearch);
     } else {
       setlistres(originalList);
@@ -108,11 +114,10 @@ const Feed = () => {
             <h1 className="f1main">{title}</h1>
             <select value={filterType} onChange={handleFilterChange}>
               <option value="">Select filter...</option>
-              <option value="4.5">Ratings 4.5+</option>
-              <option value="4.0">⭐⭐⭐⭐+</option>
-              <option value="3.0">⭐⭐⭐+</option>
-              <option value="40">Delivery Time ≤ 40 mins</option>
-              <option value="30">Delivery Time ≤ 30 mins</option>
+              <option value="4.5">Top Rated 4.5+</option>
+              <option value="4.0">⭐⭐⭐⭐ Rating</option>
+              <option value="3.0">⭐⭐⭐ Rating</option>
+              <option value="30">Delivery Time Less than 35 mins</option>
             </select>
           </div>
           <div className="fcontainer">
