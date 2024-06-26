@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "./Components/Navbar";
 import Feed from "./Components/Feed";
 import Footer from "./Components/Footer";
-import fetchCard from "./utils/fectchCard";
 
 const App = () => {
   const [listres, setListres] = useState([]);
@@ -15,7 +15,9 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchCard();
+        const response = await axios.get(process.env.REACT_APP_API_URL);
+        const data = response.data.data;
+
         const restaurants =
           data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
           [];
@@ -70,7 +72,7 @@ const App = () => {
         filterByRating(3.0, 4.0);
         break;
       case "30":
-        filterByDeliveryTime(35);
+        filterByDeliveryTime(30);
         break;
       default:
         setListres(originalList);
@@ -95,14 +97,14 @@ const App = () => {
 
   return (
     <>
-      <Navbar onSearch={handleSearch} refreshedCard={setListres} />
+      <Navbar onSearch={handleSearch} />
       <Feed
         listres={listres}
         minddata={minddata}
         title={title}
         cities={cities}
         filterType={filterType}
-        handleFilterChange={handleFilterChange}
+        filterChange={handleFilterChange}
         originalList={originalList}
       />
       <Footer Mumbai={cities} />

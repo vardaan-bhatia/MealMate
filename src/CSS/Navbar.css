@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding-top: 70px; /* Adjust according to your navbar height */
+  padding-top: 70px;
   font-family: Arial, sans-serif;
 }
 
@@ -60,7 +60,7 @@ body {
 .search-input {
   width: 95%;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 25px;
   outline: none;
@@ -143,38 +143,4 @@ body {
 
 .signin .fa-user {
   margin-right: 5px;
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c7c8cc;
-}
-.header {
-  position: relative;
-}
-
-.yellow-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0;
-  background-color: #fe9000;
-  animation: moveLine 3s ease forwards;
-}
-
-@keyframes moveLine {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%; /* End with full width */
-  }
 }

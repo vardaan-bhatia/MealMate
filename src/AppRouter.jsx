@@ -5,10 +5,12 @@ import Offer from "./Components/Offer";
 import Help from "./Components/Help";
 import Cart from "./Components/Cart";
 import ErrorPage from "./Components/ErrorPage";
+import Navbar from "./Components/Navbar";
 
 const AppRouter = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/offer" element={<Offer />} />

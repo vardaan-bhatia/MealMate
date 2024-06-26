@@ -4,7 +4,7 @@ import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
 import Shimmer from "./Shimmer";
 
-const Feed = ({ listres, handleFilterChange, title, minddata }) => {
+const Feed = ({ listres, filterChange, title, minddata }) => {
   const [filterType, setFilterType] = useState("");
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Feed = ({ listres, handleFilterChange, title, minddata }) => {
   const handleFilter = (e) => {
     const selectedFilter = e.target.value;
     setFilterType(selectedFilter);
-    handleFilterChange(selectedFilter);
+    filterChange(selectedFilter);
   };
 
   return (
@@ -31,7 +31,7 @@ const Feed = ({ listres, handleFilterChange, title, minddata }) => {
               <option value="4.5">Top Rated 4.5+</option>
               <option value="4.0">⭐⭐⭐⭐ Rating</option>
               <option value="3.0">⭐⭐⭐ Rating</option>
-              <option value="30">Delivery Time Less than 35 mins</option>
+              <option value="30">Delivery Time Less than 30 mins</option>
             </select>
           </div>
           <div className="fcontainer">

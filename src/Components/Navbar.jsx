@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../CSS/Navbar.css";
 
-const Navbar = ({ onSearch, refreshedCard }) => {
+const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
-  const [isLineAnimated, setIsLineAnimated] = useState(false);
+  const location = useLocation();
 
   const Searchfunction = () => {
     onSearch(SearchText);
@@ -19,12 +19,9 @@ const Navbar = ({ onSearch, refreshedCard }) => {
   };
 
   const handleLogoClick = () => {
-    setIsLineAnimated(true);
-    setSearchText("");
-    refreshedCard(listres);
-    setTimeout(() => {
-      setIsLineAnimated(false);
-    }, 1200);
+    if (location.pathname === "/") {
+      window.location.reload();
+    }
   };
 
   return (
@@ -37,7 +34,6 @@ const Navbar = ({ onSearch, refreshedCard }) => {
             alt="logo"
           />
           <span className="name">MealMate</span>
-          {isLineAnimated && <div className="yellow-line"></div>}
         </Link>
       </div>
 

@@ -1,7 +1,7 @@
 .mind-heading {
   font-size: 26px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 110px;
   margin-bottom: 10px;
 }
 
@@ -70,12 +70,12 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 10px;
+  margin-top: 80px;
 }
 
 .shimmerUI {
-  height: 260px;
-  width: 240px;
+  height: 270px;
+  width: 235px;
   background: linear-gradient(
     to right,
     #f0f0f0 0%,
