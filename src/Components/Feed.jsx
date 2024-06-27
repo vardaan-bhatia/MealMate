@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import FoodCard from "./FoodCard";
+import RestaurantCard from "./RestaurantCard";
 import MindSlider from "./MindSlider";
 import "../CSS/Feed.css";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Feed = ({ listres, filterChange, title, minddata }) => {
   const [filterType, setFilterType] = useState("");
@@ -16,7 +17,6 @@ const Feed = ({ listres, filterChange, title, minddata }) => {
     setFilterType(selectedFilter);
     filterChange(selectedFilter);
   };
-
   return (
     <>
       {listres.length === 0 ? (
@@ -35,8 +35,14 @@ const Feed = ({ listres, filterChange, title, minddata }) => {
             </select>
           </div>
           <div className="fcontainer">
-            {listres.map((restaurant, index) => (
-              <FoodCard restaurant={restaurant} key={index} />
+            {listres.map((restaurant) => (
+              <Link
+                key={restaurant.info.id}
+                to={"/restaurant/" + restaurant.info.id}
+                className="linkcss"
+              >
+                <RestaurantCard restaurant={restaurant} />
+              </Link>
             ))}
           </div>
         </>

@@ -83,7 +83,7 @@ const App = () => {
   const filterByRating = (rating, high) => {
     const filteredList = originalList.filter(
       (restaurant) =>
-        rating <= restaurant.info.avgRating && restaurant.info.avgRating <= high
+        rating <= restaurant.info.avgRating && restaurant.info.avgRating < high
     );
     setListres(filteredList);
   };

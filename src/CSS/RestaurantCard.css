@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 370px;
+  height: 385px;
   width: 250px;
   background-color: #fff;
   border-radius: 18px;
@@ -12,28 +12,23 @@
   cursor: pointer;
   margin: 15px;
 }
-
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
 .card > img {
   width: 100%;
   height: 50%;
 }
-
 .ftext {
   padding: 15px;
   text-align: center;
 }
-
 .ftext h2 {
   margin: 10px 0;
   font-size: 18px;
   color: #333;
 }
-
 .ftext p {
   margin: 5px 0;
   color: #555;

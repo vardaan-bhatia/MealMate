@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Api and domain
+# Api and domain id
 .env
 
 #test

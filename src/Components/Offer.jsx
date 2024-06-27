@@ -1,8 +1,10 @@
 import React from "react";
+import "../CSS/Offer.css";
+
 const Offer = () => {
   return (
     <>
-      <div>amittttttttttttttttttttttttttttttttt kaisa hai</div>
+      <div className="help">amittttttttttttttttttttttttttttttttt kaisa hai</div>
     </>
   );
 };

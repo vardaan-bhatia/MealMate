@@ -64,6 +64,7 @@ select {
   padding: 5px;
   font-size: 14px;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .shimmer-container {
@@ -97,4 +98,7 @@ select {
   100% {
     background-position: 200% 0;
   }
+}
+.linkcss {
+  text-decoration: none;
 }
