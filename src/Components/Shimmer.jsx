@@ -7,7 +7,7 @@ const Shimmer = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setloading(false);
-    }, 3000);
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
