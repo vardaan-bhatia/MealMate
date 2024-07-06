@@ -1,31 +1,13 @@
 import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import "../CSS/RestaurantMenu.css";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [menuItems, setMenuItems] = useState(null);
-  const [loading, setLoading] = useState(true);
   const { resid } = useParams();
+  const { menuItems, loading } = useRestaurantMenu(resid);
 
-  useEffect(() => {
-    MenuFetch();
-  }, [resid]);
-
-  const MenuFetch = async () => {
-    try {
-      const response = await axios.get(
-        `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.73390&lng=76.78890&restaurantId=${resid}`
-      );
-      setMenuItems(response.data.data);
-    } catch (error) {
-      console.log("error hai", error);
-    } finally {
-      setLoading(false);
-    }
-  };
   const { name, city, costForTwoMessage, totalRatingsString, cuisines } =
     menuItems?.cards?.[2]?.card?.card?.info || "";
   const itemCards =

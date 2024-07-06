@@ -3,8 +3,6 @@ import { createRoot } from "react-dom/client";
 import AppRouter from "./AppRouter";
 import "./index.css";
 import { Auth0Provider } from "@auth0/auth0-react";
-
-// Render the app
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
