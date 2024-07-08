@@ -59,7 +59,6 @@ const Footer = ({ Mumbai }) => {
                   </ul>
                 </Link>
                 <div className="social">
-                  <strong> Social :</strong>
                   <a
                     href="https://www.linkedin.com/in/vardaan-bhatia-028446203/"
                     target="_blank"
