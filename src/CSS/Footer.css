@@ -106,3 +106,13 @@
   margin-left: 10px;
   font-size: 1.25rem;
 }
+.social {
+  display: flex;
+  align-items: center;
+}
+
+.image_social {
+  height: 32px;
+  width: 32px;
+  margin: 0 5px; /* Adjusted margin for better spacing */
+}

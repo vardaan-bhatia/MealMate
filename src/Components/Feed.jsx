@@ -17,6 +17,7 @@ const Feed = ({ listres, filterChange, title, minddata }) => {
     setFilterType(selectedFilter);
     filterChange(selectedFilter);
   };
+
   return (
     <>
       {listres.length === 0 ? (

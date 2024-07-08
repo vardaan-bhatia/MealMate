@@ -58,6 +58,43 @@ const Footer = ({ Mumbai }) => {
                     <li>MealMate Genie</li>
                   </ul>
                 </Link>
+                <div className="social">
+                  <strong> Social :</strong>
+                  <a
+                    href="https://www.linkedin.com/in/vardaan-bhatia-028446203/"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-42-151143.png?f=webp&w=256"
+                      alt="Loading..."
+                      className="image_social"
+                    />
+                  </a>
+                  <a href="https://github.com/vardaan-bhatia" target="_blank">
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-512/free-github-40-432516.png?f=webp&w=256"
+                      className="image_social"
+                      alt="Loading..."
+                    />
+                  </a>
+                  <a href="https://x.com/vardaanbhatia__" target="_blank">
+                    <img
+                      src=" https://cdn.iconscout.com/icon/free/png-512/free-twitter-9420781-7651211.png?f=webp&w=256"
+                      alt="Loading..."
+                      className="image_social"
+                    />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/vardaanbhatia._/"
+                    target="_blank"
+                  >
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-512/free-instagram-52-151106.png?f=webp&w=256"
+                      className="image_social"
+                      alt="Loading..."
+                    />
+                  </a>
+                </div>
               </div>
               <div className="list-section">
                 <strong>Contact Us</strong>
@@ -82,10 +119,10 @@ const Footer = ({ Mumbai }) => {
                 </Link>
               </div>
               <div className="list-section">
-                <strong>We deliver to:</strong>
+                <strong>We deliver to</strong>
                 <ul>
                   {Array.isArray(Mumbai) && Mumbai.length > 0 ? (
-                    Mumbai.slice(0, 5).map((city, index) => (
+                    Mumbai.slice(0, 6).map((city, index) => (
                       <li key={index}>{city.text}</li>
                     ))
                   ) : (
@@ -99,7 +136,7 @@ const Footer = ({ Mumbai }) => {
                 >
                   <option value="">More cities...</option>
                   {Array.isArray(Mumbai) && Mumbai.length > 0 ? (
-                    Mumbai.slice(5).map((city, index) => (
+                    Mumbai.slice(6).map((city, index) => (
                       <option key={index} value={city.text}>
                         {city.text}
                       </option>

@@ -17,6 +17,7 @@ const useRestaurantMenu = (resid) => {
         setLoading(false);
       }
     };
+
     MenuFetch();
   }, [resid]);
 
