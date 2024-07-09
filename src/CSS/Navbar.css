@@ -24,7 +24,7 @@ body {
 }
 
 .logo-link {
-  text-decoration: none; /* Remove underline from the link */
+  text-decoration: none;
   display: flex;
   align-items: center;
 }
@@ -42,7 +42,7 @@ body {
   margin-left: 5px;
   font-size: x-large;
   font-weight: bold;
-  color: black; /* Ensure color is set correctly */
+  color: black;
 }
 
 .search-box {

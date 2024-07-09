@@ -41,7 +41,7 @@ const Navbar = ({ onSearch }) => {
         <input
           type="text"
           className="search-input"
-          placeholder="Search for restaurants and cuisines..."
+          placeholder="Search for Restaurant, Food and Cuisine..."
           value={SearchText}
           onChange={(e) => setSearchText(e.target.value)}
           onKeyDown={keypress}
