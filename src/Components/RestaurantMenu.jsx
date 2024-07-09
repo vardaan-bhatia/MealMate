@@ -6,40 +6,40 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resid } = useParams();
-  const { menuItems, loading } = useRestaurantMenu(resid);
+  const { ResDetail, MenuCards, loading } = useRestaurantMenu(resid);
 
+  if (loading) {
+    return <Shimmer />;
+  }
+  if (!ResDetail) {
+    return <div>Error loading restaurant details.</div>; // we have used this beacuse destructring used before the api call and return data even there is no data either we can use ResDetail.name and etc something like that  for everytime
+  }
   const { name, city, costForTwoMessage, totalRatingsString, cuisines } =
-    menuItems?.cards?.[2]?.card?.card?.info || "";
-  const itemCards =
-    menuItems?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-      ?.card?.itemCards || [];
+    ResDetail;
 
   return (
-    <>
-      <div className="resmenutop">
-        {loading ? (
-          <Shimmer />
-        ) : (
-          <div>
-            <h1>{name}</h1>
-            <p>{city}</p>
-            <p>{cuisines?.slice(0, 2).join(", ")}</p>
-            <p>
-              <b>
-                {costForTwoMessage} ● {totalRatingsString}
-              </b>
-            </p>
-            <ol>
-              {itemCards.map((item) => (
-                <li key={item?.card?.info?.id}>
-                  {item?.card?.info?.name || ""}
-                </li>
-              ))}
-            </ol>
-          </div>
-        )}
+    <div className="resmenutop">
+      <div>
+        <h1>{name}</h1>
+        <p>{city}</p>
+        <p>{cuisines?.slice(0, 2).join(", ")}</p>
+        <p>
+          <b>
+            {costForTwoMessage} ● {totalRatingsString}
+          </b>
+        </p>
+        <ol style={{ listStyle: "none" }}>
+          {MenuCards.flatMap((category) =>
+            category.card.card.itemCards.map((item) => (
+              <li key={item.card.info.id}>
+                <h3>{item.card.info.name}</h3>
+                <p>Price: ₹{Math.round(item.card.info.price / 100)}</p>
+              </li>
+            ))
+          )}
+        </ol>
       </div>
-    </>
+    </div>
   );
 };
 

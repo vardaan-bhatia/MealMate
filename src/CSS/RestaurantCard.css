@@ -37,7 +37,7 @@
 .offer-label {
   position: absolute;
   bottom: 199px;
-  left: 3px;
+  left: -4px;
   background-color: rgba(255, 255, 255, 0.9);
   color: #fe9000;
   font-size: small;

@@ -19,7 +19,6 @@ const useRestaurantData = () => {
         const dishdata = data.cards[0]?.card?.card?.imageGridCards?.info || [];
         const titleheading = data.cards[1]?.card?.card?.header?.title || "";
         const citiData = data.cards[10]?.card?.card?.cities || [];
-
         setListres(restaurants);
         setOriginalList(restaurants);
         setMindData(dishdata);

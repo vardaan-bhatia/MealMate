@@ -11,7 +11,7 @@ const App = () => {
 
   const handleSearch = (text) => {
     if (text) {
-      const showsearch = originalList.filter((e) => {
+      const showResSearch = originalList.filter((e) => {
         const restaurantNameMatches = e.info.name
           .toLowerCase()
           .includes(text.toLowerCase());
@@ -23,7 +23,7 @@ const App = () => {
 
         return restaurantNameMatches || cuisinesIncludeText;
       });
-      setListres(showsearch);
+      setListres(showResSearch);
     } else {
       setListres(originalList);
     }

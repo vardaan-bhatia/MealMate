@@ -42,7 +42,8 @@ const Feed = ({ listres, filterChange, title, minddata }) => {
                 to={"/restaurant/" + restaurant.info.id}
                 className="linkcss"
               >
-                <RestaurantCard restaurant={restaurant} />
+                <RestaurantCard {...restaurant} />
+                {/*we have learned the new way to pass prop for multiple props using spread operator...  or we can destructure in the child components either just take iut direct in place of prop ep11 */}
               </Link>
             ))}
           </div>

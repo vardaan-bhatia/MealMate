@@ -1,7 +1,7 @@
 import React from "react";
 import "../CSS/RestaurantCard.css";
 
-const RestaurantCard = ({ restaurant }) => {
+const RestaurantCard = ({ info }) => {
   const {
     name,
     areaName,
@@ -12,9 +12,9 @@ const RestaurantCard = ({ restaurant }) => {
     cloudinaryImageId,
     aggregatedDiscountInfoV3,
     aggregatedDiscountInfoV2,
-  } = restaurant.info;
+  } = info;
 
-  const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/${cloudinaryImageId}`;
+  const imageUrl = `${process.env.REACT_APP_IMAGE_URL}${cloudinaryImageId}`;
   const heading =
     aggregatedDiscountInfoV2?.header || aggregatedDiscountInfoV3?.header;
   const subheading =
@@ -22,7 +22,7 @@ const RestaurantCard = ({ restaurant }) => {
   return (
     <div className="card">
       <img src={imageUrl} alt={name} />
-      {(aggregatedDiscountInfoV3 || aggregatedDiscountInfoV2) && (
+      {(heading || subheading) && (
         <div className="offer-label">
           {heading} {subheading}
         </div>
@@ -46,5 +46,4 @@ const RestaurantCard = ({ restaurant }) => {
     </div>
   );
 };
-
 export default RestaurantCard;
