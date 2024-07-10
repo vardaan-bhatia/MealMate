@@ -21,10 +21,7 @@ const useRestaurantMenu = (resid) => {
             e.card?.card?.["@type"] ===
             "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
         );
-        console.log(filterdata);
-        // const fooditems =
-        //   data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-        //     ?.card?.itemCards || [];
+
         setMenuCards(filterdata);
       } catch (error) {
         console.log("Error fetching menu:", error);

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/RestaurantMenu.css";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import MenuCategory from "./MenuCategory";
 
 const RestaurantMenu = () => {
   const { resid } = useParams();
@@ -12,33 +13,43 @@ const RestaurantMenu = () => {
     return <Shimmer />;
   }
   if (!ResDetail) {
-    return <div>Error loading restaurant details.</div>; // we have used this beacuse destructring used before the api call and return data even there is no data either we can use ResDetail.name and etc something like that  for everytime
+    return <div>Error loading restaurant details</div>; // we have used this beacuse destructring used before the api call and return data even there is no data either we can use ResDetail.name and etc something like that  for everytime
   }
-  const { name, city, costForTwoMessage, totalRatingsString, cuisines } =
-    ResDetail;
+  const {
+    name,
+    city,
+    areaName,
+    costForTwoMessage,
+    avgRating,
+    totalRatingsString,
+    cuisines,
+  } = ResDetail;
 
   return (
     <div className="resmenutop">
-      <div>
-        <h1>{name}</h1>
-        <p>{city}</p>
-        <p>{cuisines?.slice(0, 2).join(", ")}</p>
-        <p>
-          <b>
-            {costForTwoMessage} ● {totalRatingsString}
-          </b>
-        </p>
-        <ol style={{ listStyle: "none" }}>
-          {MenuCards.flatMap((category) =>
-            category.card.card.itemCards.map((item) => (
-              <li key={item.card.info.id}>
-                <h3>{item.card.info.name}</h3>
-                <p>Price: ₹{Math.round(item.card.info.price / 100)}</p>
+      <center>
+        <div className="Top_details">
+          <h2>{name}</h2>
+          <p className="place">
+            {city} - {areaName}
+          </p>
+          <p className="cuisines">{cuisines?.slice(0, 2).join(", ")}</p>
+          <p>
+            <b>
+              {costForTwoMessage} ●⭐{avgRating} ({totalRatingsString})
+            </b>
+          </p>
+        </div>
+        <div className="category_item">
+          <ol style={{ listStyle: "none" }}>
+            {MenuCards.map((category) => (
+              <li key={category.card.card.title}>
+                <MenuCategory {...category} />
               </li>
-            ))
-          )}
-        </ol>
-      </div>
+            ))}
+          </ol>
+        </div>
+      </center>
     </div>
   );
 };
