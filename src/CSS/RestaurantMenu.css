@@ -166,3 +166,31 @@
 .Add_button:hover {
   background-color: #ececec;
 }
+.button_filter {
+  display: flex;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-top: 20px;
+  width: 60%;
+}
+.bestSeller_button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: white;
+  font-size: small;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.bestSeller_button.active {
+  background-color: #fe9000;
+  color: white; /* Even darker shade when active */
+}
+.bestSeller_button div {
+  margin-left: 10px; /* Space between the text and the "x" */
+}

@@ -54,15 +54,29 @@ const RestaurantMenu = () => {
             </b>
           </p>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "20%",
-          }}
-        >
-          <button type="button" onClick={handlebest}>
-            Bestseller
+        <div className="button_filter">
+          <button type="button" className={`bestSeller_button`}>
+            <img
+              style={{ height: "20px", width: "20px" }}
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/768px-Indian-vegetarian-mark.svg.png"
+              alt="Veg"
+            />
+            Veg
+          </button>
+          <button type="button" className={`bestSeller_button`}>
+            <img
+              style={{ height: "20px", width: "20px" }}
+              src="https://foodsafetyhelpline.com/wp-content/uploads/2013/05/non-veg-300x259.jpg"
+              alt="Non-Veg"
+            />
+            Non-Veg
+          </button>
+          <button
+            type="button"
+            onClick={handlebest}
+            className={`bestSeller_button ${bestSeller ? "active" : ""}`}
+          >
+            Bestseller{bestSeller && <div>✖</div>}
           </button>
         </div>
         <div className="category_item">
