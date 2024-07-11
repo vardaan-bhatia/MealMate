@@ -64,19 +64,6 @@
   transform: rotate(180deg);
 }
 
-.menu_list {
-  overflow: hidden;
-  transition: height 0.3s ease;
-}
-
-.menu_list.open {
-  height: auto;
-}
-
-.menu_list:not(.open) {
-  height: 0;
-}
-
 .menu-list {
   margin-top: 20px;
   width: 60%;
@@ -176,4 +163,9 @@
   border-radius: 10px;
   border: none;
   box-shadow: 0 3px 5px #b4b4b3;
+  cursor: pointer;
+}
+
+.Add_button:hover {
+  background-color: #ececec;
 }

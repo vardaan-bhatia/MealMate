@@ -8,6 +8,7 @@ import MenuCategory from "./MenuCategory";
 const RestaurantMenu = () => {
   const { resid } = useParams();
   const { ResDetail, MenuCards, loading } = useRestaurantMenu(resid);
+  const [OpenList, setOpenList] = useState(0);
 
   if (loading) {
     return <Shimmer />;
@@ -42,9 +43,15 @@ const RestaurantMenu = () => {
         </div>
         <div className="category_item">
           <ol style={{ listStyle: "none" }}>
-            {MenuCards.map((category) => (
+            {MenuCards.map((category, index) => (
               <li key={category.card.card.title}>
-                <MenuCategory {...category} />
+                <MenuCategory
+                  {...category}
+                  OpenList={index === OpenList && true}
+                  setOpenList={() =>
+                    setOpenList(index === OpenList ? null : index)
+                  }
+                />
               </li>
             ))}
           </ol>

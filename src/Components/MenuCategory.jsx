@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import MenuList from "./MenuList";
 
-const MenuCategory = ({ card }) => {
-  const [OpenList, setOpenList] = useState(false);
-
+const MenuCategory = ({ card, setOpenList, OpenList }) => {
   const handleClick = () => {
-    setOpenList(!OpenList);
+    setOpenList();
   };
 
   return (
@@ -14,9 +12,7 @@ const MenuCategory = ({ card }) => {
         {card.card.title} ({card.card.itemCards.length}){" "}
         <span className={`icon ${OpenList ? "open" : ""}`}>▼</span>
       </h3>
-      <div className={`menu_list ${OpenList ? "open" : ""}`}>
-        <MenuList {...card} />
-      </div>
+      {OpenList && <MenuList {...card} />}
     </div>
   );
 };

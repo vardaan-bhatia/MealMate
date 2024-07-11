@@ -21,14 +21,16 @@ const RestaurantCard = ({ info }) => {
     aggregatedDiscountInfoV2?.subHeader || aggregatedDiscountInfoV3?.subHeader;
   return (
     <div className="card">
-      <img src={imageUrl} alt={name} />
-      {(heading || subheading) && (
-        <div className="offer-label">
-          {heading} {subheading}
-        </div>
-      )}
+      <div className="image-container">
+        <img src={imageUrl} alt={name} />
+        {(heading || subheading) && (
+          <div className="offer-label">
+            {heading} {subheading}
+          </div>
+        )}
+      </div>
       <div className="ftext">
-        <h2>{name} </h2>
+        <h2>{name}</h2>
         <p>
           {" "}
           {`⭐ ${avgRatingString}`}
@@ -37,7 +39,6 @@ const RestaurantCard = ({ info }) => {
         </p>
         <p>{areaName}</p>
         <p>{cuisines.slice(0, 2).join(", ")}</p>
-
         <p>
           <b>Price: </b>
           {costForTwo}
@@ -46,4 +47,5 @@ const RestaurantCard = ({ info }) => {
     </div>
   );
 };
+
 export default RestaurantCard;

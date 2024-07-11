@@ -38,13 +38,15 @@ const Footer = ({ Mumbai }) => {
           <div className="company-details">
             <div className="logo-text">
               <img
-                style={{ width: "40px", marginRight: "10px" }}
+                style={{ width: "45px", marginRight: "5px", marginLeft: "5px" }}
                 src="https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png"
                 alt="MealMate Logo"
               />
               <strong>MealMate</strong>
             </div>
-            <p>© 2024 Vardaan Bhatia made with ❤️</p>
+            <p style={{ marginLeft: "18px" }}>
+              © 2024 Vardaan Bhatia made with ❤️
+            </p>
             <div className="list-details">
               <div className="list-section">
                 <strong>Company</strong>
