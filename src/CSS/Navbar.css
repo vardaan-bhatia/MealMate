@@ -32,12 +32,12 @@ body {
 .headerlogo {
   width: 55px;
   height: auto;
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Added transition for smooth animation */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .headerlogo:hover {
   opacity: 0.9;
-  transform: scale(1.1); /* Added scale transform for enlarging the logo */
+  transform: scale(1.1);
 }
 
 .name {

@@ -9,6 +9,7 @@ const RestaurantMenu = () => {
   const { resid } = useParams();
   const { ResDetail, MenuCards, loading } = useRestaurantMenu(resid);
   const [OpenList, setOpenList] = useState(0);
+  const [bestSeller, setBestSeller] = useState(false);
 
   if (loading) {
     return <Shimmer />;
@@ -26,6 +27,18 @@ const RestaurantMenu = () => {
     cuisines,
   } = ResDetail;
 
+  const handlebest = () => {
+    setBestSeller(!bestSeller);
+  };
+
+  const filterCategory = bestSeller
+    ? MenuCards.filter((e) =>
+        (e?.card?.card?.itemCards).some(
+          (c) => c.card.info.ribbon?.text === "Bestseller"
+        )
+      )
+    : MenuCards;
+
   return (
     <div className="resmenutop">
       <center>
@@ -37,23 +50,42 @@ const RestaurantMenu = () => {
           <p className="cuisines">{cuisines?.slice(0, 2).join(", ")}</p>
           <p>
             <b>
-              {costForTwoMessage} ●⭐{avgRating} ({totalRatingsString})
+              {costForTwoMessage} ● ⭐{avgRating} ({totalRatingsString})
             </b>
           </p>
         </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "20%",
+          }}
+        >
+          <button type="button" onClick={handlebest}>
+            Bestseller
+          </button>
+        </div>
         <div className="category_item">
           <ol style={{ listStyle: "none" }}>
-            {MenuCards.map((category, index) => (
-              <li key={category.card.card.title}>
-                <MenuCategory
-                  {...category}
-                  OpenList={index === OpenList && true}
-                  setOpenList={() =>
-                    setOpenList(index === OpenList ? null : index)
-                  }
-                />
-              </li>
-            ))}
+            {filterCategory.map((category, index) => {
+              const filteredItemsCount = category.card.card.itemCards.filter(
+                (e) => !bestSeller || e.card.info.ribbon.text === "Bestseller"
+              ).length;
+              return (
+                <li key={category.card.card.title}>
+                  <MenuCategory
+                    {...category}
+                    OpenList={index === OpenList}
+                    filteredItemsCount={filteredItemsCount}
+                    showBest={bestSeller}
+                    /*we can use true but as we using the prop in the child with && condition so there is no need as we the clicked index value is equal to the prev state value then only it open or not  and if value of clicked index is same it state change to null which means null is not eqaul to index so it will close automatically*/
+                    setOpenList={() =>
+                      setOpenList(index === OpenList ? null : index)
+                    }
+                  />
+                </li>
+              );
+            })}
           </ol>
         </div>
       </center>

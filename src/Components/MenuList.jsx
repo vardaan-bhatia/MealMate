@@ -1,17 +1,20 @@
 import React from "react";
 
-const MenuList = ({ card }) => {
+const MenuList = ({ card, setBest }) => {
+  const filteredItems = setBest
+    ? card.itemCards.filter((e) => e?.card?.info?.ribbon?.text === "Bestseller")
+    : card.itemCards;
   return (
     <div className="menu-list">
       <ol>
-        {card.itemCards.map((c) => (
+        {filteredItems.map((c) => (
           <div key={c.card.info.id}>
             <li>
               <div className="menu-item-info">
                 <div className="menu-item-header">
                   {c.card.info.itemAttribute.vegClassifier === "NONVEG" ? (
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/768px-Non_veg_symbol.svg.png"
+                      src="https://foodsafetyhelpline.com/wp-content/uploads/2013/05/non-veg-300x259.jpg"
                       alt="Non-Veg"
                     />
                   ) : (
