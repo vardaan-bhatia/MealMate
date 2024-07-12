@@ -1,9 +1,9 @@
 import React from "react";
+import usefilterMenu from "../utils/usefilterMenu";
 
-const MenuList = ({ card, setBest }) => {
-  const filteredItems = setBest
-    ? card.itemCards.filter((e) => e?.card?.info?.ribbon?.text === "Bestseller")
-    : card.itemCards;
+const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
+  const filters = { bestSeller, showVeg, showNonVeg, showOffers };
+  const filteredItems = usefilterMenu(card.itemCards, filters);
   return (
     <div className="menu-list">
       <ol>
@@ -27,7 +27,13 @@ const MenuList = ({ card, setBest }) => {
                   <span className="price">
                     ₹
                     {Math.round(c.card.info.price / 100) ||
-                      Math.round(c.card.info.defaultPrice / 100)}
+                      Math.round(c.card.info.defaultPrice / 100)}{" "}
+                    {c.card.info.offerTags?.length > 0 && (
+                      <span className="offer-tag">
+                        {`${c.card.info.offerTags[0].title || ""}
+                        ${c.card.info.offerTags[0].subTitle || ""}`}
+                      </span>
+                    )}
                   </span>
                 </div>
                 <p className="menu-item-description">

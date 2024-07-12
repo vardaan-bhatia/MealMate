@@ -101,8 +101,8 @@
 }
 
 .menu-item-header img {
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   margin-right: 10px;
 }
 
@@ -171,7 +171,7 @@
   justify-content: flex-start;
   gap: 18px;
   margin-top: 20px;
-  width: 60%;
+  width: 61%;
 }
 .bestSeller_button {
   display: inline-flex;
@@ -191,6 +191,17 @@
   background-color: #fe9000;
   color: white; /* Even darker shade when active */
 }
+.bestSeller_button.active:hover {
+  background-color: none;
+}
 .bestSeller_button div {
   margin-left: 10px; /* Space between the text and the "x" */
+}
+.back:hover {
+  background-color: #f5f7f8;
+}
+.offer-tag {
+  font-size: 0.7em; /* Adjust the size as needed */
+  color: #fe9000; /* Adjust the color as needed */
+  margin-left: 3px;
 }

@@ -4,19 +4,24 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import MenuCategory from "./MenuCategory";
+import usefilterMenu from "../utils/usefilterMenu";
 
 const RestaurantMenu = () => {
   const { resid } = useParams();
   const { ResDetail, MenuCards, loading } = useRestaurantMenu(resid);
   const [OpenList, setOpenList] = useState(0);
+  const [showVeg, setShowVeg] = useState(false);
+  const [showNonVeg, setShowNonVeg] = useState(false);
   const [bestSeller, setBestSeller] = useState(false);
+  const [showOffers, setShowOffers] = useState(false);
 
   if (loading) {
     return <Shimmer />;
   }
   if (!ResDetail) {
-    return <div>Error loading restaurant details</div>; // we have used this beacuse destructring used before the api call and return data even there is no data either we can use ResDetail.name and etc something like that  for everytime
+    return <div>Error loading restaurant details</div>;
   }
+
   const {
     name,
     city,
@@ -31,13 +36,23 @@ const RestaurantMenu = () => {
     setBestSeller(!bestSeller);
   };
 
-  const filterCategory = bestSeller
-    ? MenuCards.filter((e) =>
-        (e?.card?.card?.itemCards).some(
-          (c) => c.card.info.ribbon?.text === "Bestseller"
-        )
-      )
-    : MenuCards;
+  const handleVeg = () => {
+    setShowVeg(!showVeg);
+  };
+
+  const handleNonVeg = () => {
+    setShowNonVeg(!showNonVeg);
+  };
+
+  const hanldeOffers = () => {
+    setShowOffers(!showOffers);
+  };
+
+  const filters = { bestSeller, showVeg, showNonVeg, showOffers };
+
+  const filteredCategories = MenuCards.filter((category) => {
+    return usefilterMenu(category.card.card.itemCards, filters).length > 0;
+  });
 
   return (
     <div className="resmenutop">
@@ -55,21 +70,29 @@ const RestaurantMenu = () => {
           </p>
         </div>
         <div className="button_filter">
-          <button type="button" className={`bestSeller_button`}>
+          <button
+            type="button"
+            className="bestSeller_button back"
+            onClick={handleVeg}
+          >
             <img
-              style={{ height: "20px", width: "20px" }}
+              style={{ height: "16px", width: "16px", marginRight: "5px" }}
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Indian-vegetarian-mark.svg/768px-Indian-vegetarian-mark.svg.png"
               alt="Veg"
             />
-            Veg
+            Veg{showVeg && <div>✖</div>}
           </button>
-          <button type="button" className={`bestSeller_button`}>
+          <button
+            type="button"
+            className="bestSeller_button back"
+            onClick={handleNonVeg}
+          >
             <img
-              style={{ height: "20px", width: "20px" }}
+              style={{ height: "16px", width: "16px", marginRight: "5px" }}
               src="https://foodsafetyhelpline.com/wp-content/uploads/2013/05/non-veg-300x259.jpg"
               alt="Non-Veg"
             />
-            Non-Veg
+            Non-Veg{showNonVeg && <div>✖</div>}
           </button>
           <button
             type="button"
@@ -78,28 +101,74 @@ const RestaurantMenu = () => {
           >
             Bestseller{bestSeller && <div>✖</div>}
           </button>
+          <button
+            type="button"
+            onClick={hanldeOffers}
+            className={`bestSeller_button ${showOffers ? "active" : ""}`}
+          >
+            Offers {showOffers && <div>✖</div>}
+          </button>
         </div>
         <div className="category_item">
           <ol style={{ listStyle: "none" }}>
-            {filterCategory.map((category, index) => {
-              const filteredItemsCount = category.card.card.itemCards.filter(
-                (e) => !bestSeller || e.card.info.ribbon.text === "Bestseller"
-              ).length;
-              return (
-                <li key={category.card.card.title}>
-                  <MenuCategory
-                    {...category}
-                    OpenList={index === OpenList}
-                    filteredItemsCount={filteredItemsCount}
-                    showBest={bestSeller}
-                    /*we can use true but as we using the prop in the child with && condition so there is no need as we the clicked index value is equal to the prev state value then only it open or not  and if value of clicked index is same it state change to null which means null is not eqaul to index so it will close automatically*/
-                    setOpenList={() =>
-                      setOpenList(index === OpenList ? null : index)
+            {filteredCategories.length > 0 ? (
+              filteredCategories.map((category, index) => {
+                const filteredItemsCount = category.card.card.itemCards.filter(
+                  (item) => {
+                    if (
+                      showVeg &&
+                      item?.card?.info?.itemAttribute?.vegClassifier !== "VEG"
+                    ) {
+                      return false;
                     }
-                  />
-                </li>
-              );
-            })}
+                    if (
+                      showNonVeg &&
+                      item?.card?.info?.itemAttribute?.vegClassifier !==
+                        "NONVEG"
+                    ) {
+                      return false;
+                    }
+                    if (
+                      bestSeller &&
+                      item?.card?.info?.ribbon?.text !== "Bestseller"
+                    ) {
+                      return false;
+                    }
+                    if (
+                      showOffers &&
+                      (!item?.card?.info?.offerTags ||
+                        item?.card?.info?.offerTags.length === 0)
+                    ) {
+                      return false;
+                    }
+                    return true;
+                  }
+                ).length;
+                return (
+                  <li key={category.card.card.title}>
+                    <MenuCategory
+                      {...category}
+                      OpenList={index === OpenList}
+                      filteredItemsCount={filteredItemsCount}
+                      bestSeller={bestSeller}
+                      showVeg={showVeg}
+                      showNonVeg={showNonVeg}
+                      showOffers={showOffers}
+                      setOpenList={() =>
+                        setOpenList(index === OpenList ? null : index)
+                      }
+                    />
+                  </li>
+                );
+              })
+            ) : (
+              <div className="category_name">
+                <img
+                  src="https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?resize=400x300&vertical=center"
+                  alt="NO RESULTS"
+                />
+              </div>
+            )}
           </ol>
         </div>
       </center>
