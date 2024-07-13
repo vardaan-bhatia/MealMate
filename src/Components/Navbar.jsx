@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom";
 import "../CSS/Navbar.css";
@@ -6,11 +6,22 @@ import "../CSS/Navbar.css";
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
+  const [msgState, setMsgState] = useState(true);
   const location = useLocation();
 
   const Searchfunction = () => {
     onSearch(SearchText);
   };
+  useEffect(() => {
+    let timer;
+    if (msgState) {
+      timer = setTimeout(() => {
+        setMsgState(false);
+      }, 5000); // Set msgState to false after 3 seconds
+    }
+
+    return () => clearTimeout(timer);
+  }, [msgState]);
 
   const keypress = (e) => {
     if (e.key === "Enter") {
@@ -79,7 +90,12 @@ const Navbar = ({ onSearch }) => {
                   alt={user.name}
                   className="user-avatar"
                 />
-                <span className="user-name">Welcome, {user.name}</span>
+                <span className="user-name">
+                  {msgState && "Welcome,"} {user.name}
+                </span>
+                <button className="logout" style={{}}>
+                  Logout
+                </button>
               </>
             ) : (
               <>

@@ -140,9 +140,26 @@ body {
 }
 
 .signin:hover {
-  background-color: #ffbf78;
+  background-color: #f7a140;
 }
 
 .signin .fa-user {
   margin-right: 5px;
+}
+.logout {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  height: 35px;
+  width: auto;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.logout:hover {
+  background-color: #fe9000;
+  color: white;
 }
