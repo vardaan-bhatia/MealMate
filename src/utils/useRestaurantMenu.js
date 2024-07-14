@@ -16,6 +16,7 @@ const useRestaurantMenu = (resid) => {
         setResDetail(resinfo);
         const cards =
           data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
         const filterdata = cards.filter(
           (e) =>
             e.card?.card?.["@type"] ===

@@ -104,6 +104,36 @@ body {
   color: black;
   text-decoration: none;
 }
+.link i {
+  margin-right: 5px;
+}
+.cart-count {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count .fa-cart-shopping {
+  position: relative;
+  margin-right: 10px;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: -9px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  border-radius: 50%;
+  background-color: #fc9037;
+  color: #ffffff;
+  height: 18px;
+  width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
 .glass {
   font-size: larger;

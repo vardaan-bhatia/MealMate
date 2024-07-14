@@ -11,6 +11,10 @@ const Shimmer = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return loading ? (
     <div className="shimmer-container">
       {[...Array(10)].map((e, index) => (
@@ -18,17 +22,22 @@ const Shimmer = () => {
       ))}
     </div>
   ) : (
-    <div style={{ marginTop: "80px" }}>
-      <center>
-        <img
-          src="https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?resize=400x300&vertical=center"
-          alt="NO RESULTS"
-        />
-        <h1>
-          CLICK THE LOGO TO <span style={{ color: "#fc9037" }}>REFRESH</span>{" "}
-          THE PAGE !
-        </h1>
-      </center>
+    <div className="center-container">
+      <img
+        src="https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?resize=400x300&vertical=center"
+        alt="NO RESULTS"
+      />{" "}
+      <p className="empty-cart-text">
+        As no search results found you can refresh the page to explore other
+        restaurants
+      </p>
+      <button
+        type="button"
+        className="empty-cart-button"
+        onClick={handleRefresh}
+      >
+        Click here to Refresh !
+      </button>
     </div>
   );
 };

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom";
 import "../CSS/Navbar.css";
+import { useSelector } from "react-redux";
 
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
   const [msgState, setMsgState] = useState(true);
   const location = useLocation();
+
+  const cart = useSelector((store) => store.cart.items);
 
   const Searchfunction = () => {
     onSearch(SearchText);
@@ -75,8 +78,13 @@ const Navbar = ({ onSearch }) => {
             </Link>
           </li>
           <li className="listhov">
-            <Link to="/cart" className="listhov link">
-              <i className="fa-solid fa-cart-shopping"></i> Cart
+            <Link to="/cart" className="listhov link cart-count">
+              <i className="fa-solid fa-cart-shopping">
+                {cart.length > 0 && (
+                  <span className="badge">{cart.length}</span>
+                )}
+              </i>
+              Cart
             </Link>
           </li>
           <li

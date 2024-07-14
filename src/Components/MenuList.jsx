@@ -1,9 +1,21 @@
 import React from "react";
 import usefilterMenu from "../utils/usefilterMenu";
+import { useDispatch } from "react-redux";
+import { additem } from "../utils/cartSlice";
 
-const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
+const MenuList = ({
+  card = {},
+  bestSeller,
+  showVeg,
+  showNonVeg,
+  showOffers,
+}) => {
   const filters = { bestSeller, showVeg, showNonVeg, showOffers };
-  const filteredItems = usefilterMenu(card.itemCards, filters);
+  const filteredItems = usefilterMenu(card.itemCards || [], filters);
+  const dispatch = useDispatch();
+  const handleAdditem = (items) => {
+    dispatch(additem(items));
+  };
   return (
     <div className="menu-list">
       <ol>
@@ -12,7 +24,8 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
             <li>
               <div className="menu-item-info">
                 <div className="menu-item-header">
-                  {c.card.info.itemAttribute.vegClassifier === "NONVEG" ? (
+                  {c?.card?.info?.itemAttribute?.vegClassifier &&
+                  c.card.info.itemAttribute.vegClassifier === "NONVEG" ? (
                     <img
                       src="https://foodsafetyhelpline.com/wp-content/uploads/2013/05/non-veg-300x259.jpg"
                       alt="Non-Veg"
@@ -42,6 +55,14 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
                       {c.card.info.ribbon.text} <br />
                     </span>
                   )}
+
+                  {c.card.info.ratings.aggregatedRating.rating && (
+                    <span style={{ fontSize: "14px", fontWeight: "bold" }}>
+                      {`⭐${c.card.info.ratings.aggregatedRating.rating} (${c.card.info.ratings.aggregatedRating.ratingCountV2})`}
+                      <br />
+                    </span>
+                  )}
+
                   {c.card.info.description}
                 </p>
               </div>
@@ -57,7 +78,9 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
                   }}
                 />
 
-                <button className="Add_button">ADD +</button>
+                <button className="Add_button" onClick={() => handleAdditem(c)}>
+                  ADD +
+                </button>
               </div>
             </li>
           </div>
