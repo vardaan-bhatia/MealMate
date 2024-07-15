@@ -69,12 +69,12 @@ const Navbar = ({ onSearch }) => {
         <ul className="list">
           <li className="listhov">
             <Link to="/offer" className="listhov link">
-              <i className="fa-solid fa-tag"></i> Offer
+              <i class="fa fa-envelope"></i> Contact Us
             </Link>
           </li>
           <li className="listhov">
             <Link to="/help" className="listhov link">
-              <i className="fa-solid fa-comments"></i> Help
+              <i className="fa-solid fa-comments"></i> AI-Help
             </Link>
           </li>
           <li className="listhov">

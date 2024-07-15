@@ -151,20 +151,40 @@
   position: absolute;
   bottom: 0;
   height: 35px;
-  width: 70px;
+  width: 100px;
   color: #1ba672;
   font-weight: 900;
   font-size: medium;
-  padding: 2px;
-  background-color: white;
+  padding: 0px;
+  background-color: #ffffff;
   border-radius: 10px;
   border: none;
   box-shadow: 0 3px 5px #b4b4b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+.Add_count {
+  margin: 8px;
+  width: 100%;
+}
+.Add_button:hover {
+  background-color: #f5f7f8;
+}
+.add_operate {
+  height: 100%;
+  width: 140px;
+  font-size: larger;
+  font-weight: bold;
+  color: #1ba672;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
-
-.Add_button:hover {
-  background-color: #ececec;
+.add_operate:hover {
+  background-color: #d9dadb;
 }
 .button_filter {
   display: flex;
