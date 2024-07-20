@@ -69,7 +69,7 @@ const Navbar = ({ onSearch }) => {
         <ul className="list">
           <li className="listhov">
             <Link to="/offer" className="listhov link">
-              <i class="fa fa-envelope"></i> Contact Us
+              <i className="fa fa-envelope"></i> Contact Us
             </Link>
           </li>
           <li className="listhov">
