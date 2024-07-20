@@ -17,7 +17,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
   width: 100%;
-  margin: 10px;
+  margin-top: 12px;
 }
 
 /* Messages section */
@@ -34,8 +34,7 @@
   padding: 8px;
   border-radius: 5px;
   margin-bottom: 5px;
-  max-width: 80%;
-  clear: both; /* Ensure messages are cleared after each one */
+  max-width: 80%; /* Ensure messages are cleared after each one */
   position: relative;
 }
 
@@ -79,6 +78,7 @@
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* Hover effect for send button */

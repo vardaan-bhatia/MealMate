@@ -66,11 +66,12 @@ const Help = () => {
     <>
       <center>
         <div className="chat-container">
-          <h1>Chat with AI</h1>
+          <h1 style={{ marginRight: "15rem" }}>Chat with AI</h1>
           <div className="chat-box">
             <div className="messages">
               <div className="message bot-message">
-                Hi, How may I help you today?
+                Hi 👋, How can I assist you today? Fun fact: I'm faster than
+                Zwiggy and Somato because I deliver answers, not just food! 🍔😉
               </div>
               {messages.map((message, index) => (
                 <div
@@ -88,6 +89,7 @@ const Help = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask me anything..."
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     sendMessage(input);
