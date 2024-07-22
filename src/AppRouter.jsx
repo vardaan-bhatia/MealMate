@@ -14,7 +14,7 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/offer" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/help" element={<Help />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/restaurant/:resid" element={<RestaurantMenu />} />

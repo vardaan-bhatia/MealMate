@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../CSS/Contact.css";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_5ox9uez", "template_kuqtkq9", form.current, {
+        publicKey: "O7zKidmjbxo__NgMj",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
+
   return (
     <div className="contact">
       <img
@@ -10,14 +30,14 @@ const Contact = () => {
         className="contact_img"
       />
       <div className="contact_form">
-        <form>
+        <form ref={form} onSubmit={sendEmail}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" id="name" />
           <label htmlFor="email">Email</label>
           <input type="text" name="email" id="email" />
           <label htmlFor="message">Message</label>
           <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="button" value="Submit" />
+          <button type="button">Submit</button>
         </form>
       </div>
     </div>

@@ -68,7 +68,7 @@ const Navbar = ({ onSearch }) => {
       <div className="nav-items">
         <ul className="list">
           <li className="listhov">
-            <Link to="/offer" className="listhov link">
+            <Link to="/contact" className="listhov link">
               <i className="fa fa-envelope"></i> Contact Us
             </Link>
           </li>

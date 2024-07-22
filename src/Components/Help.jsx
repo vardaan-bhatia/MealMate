@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -8,6 +8,7 @@ import "../CSS/Help.css";
 const Help = () => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
+  const messagesContainerRef = useRef(null);
   const {
     transcript,
     browserSupportsSpeechRecognition,
@@ -16,16 +17,26 @@ const Help = () => {
   } = useSpeechRecognition();
 
   useEffect(() => {
-    if (!listening && transcript) {
+    if (transcript) {
       setInput(transcript);
+    }
+  }, [transcript]);
+
+  useEffect(() => {
+    if (!listening && transcript) {
       sendMessage(transcript);
     }
   }, [listening, transcript]);
 
   const sendMessage = async (message) => {
+    setInput("");
     if (!message.trim()) return;
 
-    const userMessage = { sender: "user", text: message };
+    const userMessage = {
+      sender: "user",
+      text: message,
+      index: messages.length,
+    };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
     try {
@@ -40,19 +51,33 @@ const Help = () => {
       const botMessage = {
         sender: "bot",
         text: text || "Error fetching response",
+        index: messages.length + 1,
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
-      setInput("");
       resetTranscript();
     } catch (error) {
       console.error("Error generating content:", error);
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: "bot", text: "Error fetching response" },
+        {
+          sender: "bot",
+          text: "Error fetching response",
+          index: messages.length + 1,
+        },
       ]);
       setInput("");
     }
   };
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      const lastMessageElement = messagesContainerRef.current.querySelector(
+        `[data-index="${lastMessage.index}"]`
+      );
+      lastMessageElement.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   const startListening = () => {
     SpeechRecognition.startListening({ continuous: false });
@@ -68,14 +93,16 @@ const Help = () => {
         <div className="chat-container">
           <h1 style={{ marginRight: "15rem" }}>Chat with AI</h1>
           <div className="chat-box">
-            <div className="messages">
+            <div className="messages" ref={messagesContainerRef}>
               <div className="message bot-message">
-                Hi 👋, How can I assist you today? Fun fact: I'm faster than
-                Zwiggy and Somato because I deliver answers, not just food! 🍔😉
+                Hi 👋, Welcome to MealMate ! How can I assist you today? Fun
+                fact: I'm faster than Zwiggy and Somato because I deliver
+                answers, not just food! 🍔😉
               </div>
               {messages.map((message, index) => (
                 <div
                   key={index}
+                  data-index={message.index}
                   className={`message ${
                     message.sender === "user" ? "user-message" : "bot-message"
                   }`}
