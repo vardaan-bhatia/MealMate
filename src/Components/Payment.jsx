@@ -19,7 +19,7 @@ const Payment = ({ amount, onPaymentSuccess }) => {
         "https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png",
       handler: function (response) {
         console.log("Payment successful:", response);
-        onPaymentSuccess(); // Notify Cart component of successful payment
+        onPaymentSuccess();
       },
       prefill: {
         name: "Customer Name",

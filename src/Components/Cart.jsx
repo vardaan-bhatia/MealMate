@@ -37,7 +37,7 @@ const Cart = () => {
   };
 
   const totalPrice = calculateTotalPrice();
-  const deliveryFee = totalPrice * 0.08;
+  const deliveryFee = Math.min(totalPrice * 0.05, 55);
   const totalAmount = totalPrice + deliveryFee;
 
   const handlePaymentSuccess = () => {
