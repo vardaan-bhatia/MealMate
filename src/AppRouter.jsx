@@ -7,6 +7,7 @@ import Cart from "./Components/Cart";
 import ErrorPage from "./Components/ErrorPage";
 import Navbar from "./Components/Navbar";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import SuccessPage from "./Components/SuccessPage";
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
         <Route path="/help" element={<Help />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/restaurant/:resid" element={<RestaurantMenu />} />
+        <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

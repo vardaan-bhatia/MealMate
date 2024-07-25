@@ -1,9 +1,8 @@
-// src/Payment.jsx
 import React from "react";
 
 const Payment = ({ amount, onPaymentSuccess }) => {
   const handlePayment = () => {
-    const amountInPaise = Math.round(amount * 100); // Convert amount to paise
+    const amountInPaise = Math.round(amount * 100);
 
     if (amountInPaise < 100) {
       alert("The minimum amount should be ₹1.");
@@ -11,15 +10,16 @@ const Payment = ({ amount, onPaymentSuccess }) => {
     }
 
     const options = {
-      key: "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay key ID
-      amount: amountInPaise, // Amount in paise (₹1 = 100 paise)
+      key: "rzp_test_oUfbqC4lUeA9Sa",
+      amount: amountInPaise,
       currency: "INR",
       name: "MealMate",
       description: "Test Transaction",
+      image:
+        "https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-food-logo-png-image_5687686.png",
       handler: function (response) {
-        // You can send the response details to your server here
         console.log("Payment successful:", response);
-        onPaymentSuccess();
+        onPaymentSuccess(); // Notify Cart component of successful payment
       },
       prefill: {
         name: "Customer Name",
@@ -27,7 +27,7 @@ const Payment = ({ amount, onPaymentSuccess }) => {
         contact: "9999999999",
       },
       theme: {
-        color: "#3399cc",
+        color: "#2C7CC5",
       },
     };
 

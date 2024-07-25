@@ -4,9 +4,12 @@ import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import MenuList from "./MenuList";
 import { clearcart } from "../utils/cartSlice";
-import Payment from "./Payment";
+import Payment from "./Payment"; // Import Payment component
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Cart = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
   const cart = useSelector((store) => store.cart.items);
 
   const groupedCart = cart.reduce((acc, item) => {
@@ -33,14 +36,14 @@ const Cart = () => {
     }, 0);
   };
 
-  const handlePaymentSuccess = () => {
-    // Handle post-payment actions here (e.g., redirect to a confirmation page, show a success message, etc.)
-    dispatch(clearcart());
-  };
-
   const totalPrice = calculateTotalPrice();
-  const deliveryFee = totalPrice / 15;
+  const deliveryFee = totalPrice * 0.08;
   const totalAmount = totalPrice + deliveryFee;
+
+  const handlePaymentSuccess = () => {
+    dispatch(clearcart()); // Clear the cart upon successful payment
+    navigate("/success"); // Redirect to /success page
+  };
 
   return (
     <div className="help">
