@@ -4,11 +4,11 @@ import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import MenuList from "./MenuList";
 import { clearcart } from "../utils/cartSlice";
-import Payment from "./Payment"; // Import Payment component
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Payment from "./Payment";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const cart = useSelector((store) => store.cart.items);
 
