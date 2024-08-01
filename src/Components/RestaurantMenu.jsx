@@ -148,12 +148,12 @@ const RestaurantMenu = () => {
                   <li key={category.card.card.title}>
                     <MenuCategory
                       {...category}
-                      OpenList={index === OpenList}
                       filteredItemsCount={filteredItemsCount}
                       bestSeller={bestSeller}
                       showVeg={showVeg}
                       showNonVeg={showNonVeg}
                       showOffers={showOffers}
+                      OpenList={index === OpenList} /*lifting the state up*/
                       setOpenList={() =>
                         setOpenList(index === OpenList ? null : index)
                       }

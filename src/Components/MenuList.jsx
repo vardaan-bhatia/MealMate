@@ -3,16 +3,11 @@ import usefilterMenu from "../utils/usefilterMenu";
 import { useDispatch } from "react-redux";
 import { additem, removeitem } from "../utils/cartSlice";
 
-const MenuList = ({
-  card = {},
-  bestSeller,
-  showVeg,
-  showNonVeg,
-  showOffers,
-}) => {
+const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
   const filters = { bestSeller, showVeg, showNonVeg, showOffers };
   const filteredItems = usefilterMenu(card.itemCards || [], filters);
   const dispatch = useDispatch();
+
   const [itemCounts, setItemCounts] = useState(
     card.itemCards.reduce((acc, item) => {
       acc[item.card.info.id] = item.count || 0;
