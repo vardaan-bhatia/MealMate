@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Components/Navbar";
 import Feed from "./Components/Feed";
 import Footer from "./Components/Footer";
 import useRestaurantData from "./utils/useRestaurantData";
+import { Visible } from "./utils/ContextLocation";
 
 const App = () => {
   const [filterType, setFilterType] = useState("");
   const { listres, setListres, originalList, minddata, title, cities } =
     useRestaurantData();
+  const { showLocation } = useContext(Visible);
 
   const handleSearch = (text) => {
     if (text) {
@@ -68,17 +70,28 @@ const App = () => {
 
   return (
     <>
-      <Navbar onSearch={handleSearch} />
-      <Feed
-        listres={listres}
-        minddata={minddata}
-        title={title}
-        cities={cities}
-        filterType={filterType}
-        filterChange={handleFilterChange}
-        originalList={originalList}
-      />
-      <Footer Mumbai={cities} />
+      <div
+        style={
+          showLocation
+            ? {
+                overflow: "hidden",
+                maxHeight: "100vh",
+              }
+            : {}
+        }
+      >
+        <Navbar onSearch={handleSearch} />
+        <Feed
+          listres={listres}
+          minddata={minddata}
+          title={title}
+          cities={cities}
+          filterType={filterType}
+          filterChange={handleFilterChange}
+          originalList={originalList}
+        />
+        <Footer Mumbai={cities} />
+      </div>
     </>
   );
 };

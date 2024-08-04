@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { LatandLng } from "./ContextLocation";
 
 const useRestaurantData = () => {
   const [listres, setListres] = useState([]);
@@ -8,10 +9,16 @@ const useRestaurantData = () => {
   const [minddata, setMindData] = useState([]);
   const [title, setTitle] = useState("");
   const [cities, setCities] = useState([]);
+
+  const {
+    cordinates: { lat, lng },
+  } = useContext(LatandLng);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(process.env.REACT_APP_API_URL);
+        const response = await axios.get(
+          `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+        );
         const data = response.data.data;
         const restaurants =
           data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
@@ -29,7 +36,7 @@ const useRestaurantData = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [lat, lng]);
   return { listres, setListres, originalList, minddata, title, cities };
 };
 
