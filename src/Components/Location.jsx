@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../CSS/Location.css";
 import axios from "axios";
-import { LatandLng } from "../utils/ContextLocation";
+import { CityLabel, LatandLng } from "../utils/ContextLocation";
 
 const Location = ({ onClose }) => {
   const [cityValue, setCityvalue] = useState("");
@@ -9,6 +9,7 @@ const Location = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { setCordinates } = useContext(LatandLng);
+  const { setCityName } = useContext(CityLabel);
 
   const useDebounce = (value, delay) => {
     const [debounce, setDebounce] = useState(value);
@@ -61,7 +62,7 @@ const Location = ({ onClose }) => {
       lat: data.data[0]?.geometry?.location?.lat,
       lng: data.data[0]?.geometry?.location?.lng,
     });
-    console.log(data.data[0]?.formatted_address);
+    setCityName(data.data[0]?.formatted_address);
   };
 
   fetchLatandLong();
@@ -79,18 +80,33 @@ const Location = ({ onClose }) => {
           value={cityValue}
           style={{
             padding: "8px",
-            width: "290px",
-            border: "1px solid black",
-            borderRadius: "10px",
+            width: "400px",
+
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+
+            marginTop: "40px",
           }}
         />
         {loading && <p>Loading...</p>}
         {error && <p className="error-message">{error}</p>}
         <div className="location-list">
+          {cityList.length === 0 && <div>Search Location</div>}
           <ul>
             {cityList.map((e) => (
-              <li key={e.place_id} onClick={() => fetchLatandLong(e.place_id)}>
-                <h4>{e.structured_formatting.main_text}</h4>
+              <li
+                key={e.place_id}
+                onClick={() => fetchLatandLong(e.place_id)}
+                style={{
+                  borderBottom: "2px dotted #C7C8CC",
+                  margin: "20px",
+                  listStyle: "none",
+                  width: "400px",
+                }}
+              >
+                <span style={{ display: "flex", gap: "5px" }}>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <h4>{e.structured_formatting.main_text}</h4>
+                </span>
                 <p>{e.structured_formatting.secondary_text}</p>
               </li>
             ))}

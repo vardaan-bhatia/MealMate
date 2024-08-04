@@ -7,7 +7,7 @@ import RestaurantMenu from "./Components/RestaurantMenu";
 import SuccessPage from "./Components/SuccessPage";
 import { lazy, Suspense } from "react";
 import Cart from "./Components/Cart";
-import { Visible, LatandLng } from "./utils/ContextLocation";
+import { Visible, LatandLng, CityLabel } from "./utils/ContextLocation";
 import { useState } from "react";
 
 const Contact = lazy(() => import("./Components/Contact"));
@@ -19,25 +19,28 @@ const AppRouter = () => {
     lat: 30.733315,
     lng: 76.779419,
   });
+  const [cityName, setCityName] = useState("Chandigarh");
 
   return (
     <Visible.Provider value={{ showLocation, setShowLocation }}>
       <LatandLng.Provider value={{ cordinates, setCordinates }}>
-        <Router>
-          <div></div>
-          <Navbar />
-          <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<App />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/help" element={<Help />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/restaurant/:resid" element={<RestaurantMenu />} />
-              <Route path="/success" element={<SuccessPage />} />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          </Suspense>
-        </Router>
+        <CityLabel.Provider value={{ cityName, setCityName }}>
+          <Router>
+            <div></div>
+            <Navbar />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/restaurant/:resid" element={<RestaurantMenu />} />
+                <Route path="/success" element={<SuccessPage />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            </Suspense>
+          </Router>
+        </CityLabel.Provider>
       </LatandLng.Provider>
     </Visible.Provider>
   );

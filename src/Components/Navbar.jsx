@@ -4,13 +4,14 @@ import { Link, useLocation } from "react-router-dom";
 import "../CSS/Navbar.css";
 import { useSelector } from "react-redux";
 import Location from "./Location";
-import { Visible } from "../utils/ContextLocation";
+import { CityLabel, Visible } from "../utils/ContextLocation";
 
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
   const [msgState, setMsgState] = useState(true);
   const { showLocation, setShowLocation } = useContext(Visible);
+  const { cityName } = useContext(CityLabel);
   const location = useLocation();
 
   const cart = useSelector((store) => store.cart.items);
@@ -49,7 +50,7 @@ const Navbar = ({ onSearch }) => {
   const handleCloseLocation = () => {
     setShowLocation(false); // Hide location on close button click
   };
-
+  const truncatedCityName = cityName.slice(0, 25);
   return (
     <>
       <div className="header">
@@ -63,14 +64,11 @@ const Navbar = ({ onSearch }) => {
             <span className="name">MealMate</span>
           </Link>
         </div>
-        <div>
-          <span>other</span>
-          <img
-            src="https://www.svgrepo.com/show/409025/angle-down.svg"
-            style={{ height: "40px", width: "40px", cursor: "pointer" }}
-            alt=""
-            onClick={handleLocationClick} // Toggle location on click
-          />
+        <div onClick={handleLocationClick} className="location">
+          <span className="city">{truncatedCityName}</span>{" "}
+          <span style={{ color: "red" }}>
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
         </div>
         {showLocation && <Location onClose={handleCloseLocation} />}{" "}
         <div className="search-box">
