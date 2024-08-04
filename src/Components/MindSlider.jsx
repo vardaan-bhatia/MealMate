@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import DishCard from "./DishCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../CSS/SlickCustom.css";
+import "../CSS/SlickCustom.scss";
 
 const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
   <button

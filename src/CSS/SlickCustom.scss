@@ -1,0 +1,275 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Restaurant Menu Top Section */
+.resmenutop {
+  margin-top: 100px;
+}
+
+.Top_details {
+  width: 61%;
+  padding: 5px;
+  text-align: left;
+
+  h2 {
+    margin: 18px 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: #161a1f;
+  }
+
+  p {
+    margin: 4px 0;
+  }
+
+  .cuisines {
+    text-decoration: underline;
+    color: #fe9000;
+    font-weight: 700;
+  }
+}
+
+/* Category Section */
+.category_item {
+  margin-top: 42px;
+}
+
+.category_name {
+  h3 {
+    cursor: pointer;
+    box-shadow: 0 3px 5px #b4b4b3;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: large;
+    background-color: white;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f5f7f8;
+    }
+
+    .icon {
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+/* Menu List Section */
+.menu-list {
+  margin-top: 20px;
+  width: 60%;
+  cursor: pointer;
+
+  ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    background-color: #fff;
+    transition: box-shadow 0.2s ease-in;
+
+    &:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-item-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 75%;
+
+      .menu-item-header {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 16px;
+          width: 16px;
+          margin-right: 10px;
+        }
+
+        h4 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .price {
+          margin-left: 10px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #000;
+        }
+
+        .best-seller {
+          color: #fe9000;
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+
+      .menu-item-description {
+        margin-top: 5px;
+        color: #555;
+        text-align: left;
+      }
+    }
+
+    .menu-item-image-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .menu-item-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      .Add_button {
+        position: absolute;
+        bottom: 0;
+        height: 35px;
+        width: 100px;
+        color: #1ba672;
+        font-weight: 900;
+        font-size: medium;
+        padding: 0px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 3px 5px #b4b4b3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        overflow: hidden;
+
+        &:hover {
+          background-color: #f5f7f8;
+        }
+
+        .Add_count {
+          margin: 8px;
+          width: 100%;
+        }
+      }
+
+      .add_operate {
+        height: 100%;
+        width: 140px;
+        font-size: larger;
+        font-weight: bold;
+        color: #1ba672;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #d9dadb;
+        }
+      }
+    }
+  }
+}
+
+/* Filter Button Section */
+.button_filter {
+  display: flex;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-top: 20px;
+  width: 61%;
+
+  .bestSeller_button {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: white;
+    font-size: small;
+    border: none;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    &.active {
+      background-color: #fe9000;
+      color: white;
+
+      &:hover {
+        background-color: none;
+      }
+    }
+
+    div {
+      margin-left: 10px;
+    }
+  }
+
+  .back:hover {
+    background-color: #f5f7f8;
+  }
+
+  .offer-tag {
+    font-size: 0.7em;
+    color: #fe9000;
+    margin-left: 3px;
+  }
+}
+
+/* Slick Slider Navigation Buttons */
+.slick-prev,
+.slick-next {
+  background: #b4b4b8;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  opacity: 1;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #c7c8cc;
+    opacity: 1;
+    outline: none;
+  }
+}
+
+.slick-prev {
+  left: -40px;
+}
+
+.slick-next {
+  right: -40px;
+}

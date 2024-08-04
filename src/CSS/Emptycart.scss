@@ -1,0 +1,33 @@
+.container {
+  text-align: center;
+
+  .empty-cart-image {
+    height: 400px;
+    margin-bottom: 20px;
+  }
+
+  .empty-cart-heading {
+    margin-bottom: 10px;
+    color: #535665;
+  }
+
+  .empty-cart-text {
+    margin-bottom: 20px;
+    color: #7e808c;
+  }
+
+  .empty-cart-button {
+    background-color: #ff9000;
+    border: none;
+    color: white;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f7a140;
+    }
+  }
+}

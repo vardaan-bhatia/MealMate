@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom";
-import "../CSS/Navbar.css";
+import "../CSS/Navbar.scss";
 import { useSelector } from "react-redux";
 import Location from "./Location";
 import { CityLabel, Visible } from "../utils/ContextLocation";

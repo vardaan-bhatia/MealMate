@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../CSS/RestaurantMenu.css";
+import "../CSS/RestaurantMenu.scss";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";

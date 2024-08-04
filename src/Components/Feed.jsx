@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import MindSlider from "./MindSlider";
-import "../CSS/Feed.css";
+import "../CSS/Feed.scss";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { Visible } from "../utils/ContextLocation";
