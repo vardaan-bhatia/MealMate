@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "../CSS/Location.scss";
+import "../SCSS/Location.scss";
 import axios from "axios";
 import { CityLabel, LatandLng } from "../utils/ContextLocation";
 

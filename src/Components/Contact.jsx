@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "../CSS/Contact.scss";
+import "../SCSS/Contact.scss";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

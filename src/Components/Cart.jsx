@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/Cart.scss";
+import "../SCSS/Cart.scss";
 import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
 import MenuList from "./MenuList";

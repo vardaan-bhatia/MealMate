@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom";
-import "../CSS/Navbar.scss";
+import "../SCSS/Navbar.scss";
 import { useSelector } from "react-redux";
 import Location from "./Location";
 import { CityLabel, Visible } from "../utils/ContextLocation";
@@ -25,7 +25,7 @@ const Navbar = ({ onSearch }) => {
     if (msgState) {
       timer = setTimeout(() => {
         setMsgState(false);
-      }, 5000); // Set msgState to false after 5 seconds
+      }, 10000); // Set msgState to false after 5 seconds
     }
 
     return () => clearTimeout(timer);

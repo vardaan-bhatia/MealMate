@@ -3,7 +3,7 @@ import axios from "axios";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import "../CSS/Help.scss";
+import "../SCSS/Help.scss";
 
 const Help = () => {
   const [input, setInput] = useState("");

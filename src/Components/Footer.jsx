@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/Footer.scss";
+import "../SCSS/Footer.scss";
 import { Link } from "react-router-dom";
 
 const Footer = ({ Mumbai }) => {

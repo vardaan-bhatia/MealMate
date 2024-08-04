@@ -1,7 +1,7 @@
 import React from "react";
 import noitems from "../utils/noitems.webp";
 import { Link } from "react-router-dom";
-import "../CSS/Emptycart.scss";
+import "../SCSS/Emptycart.scss";
 
 const EmptyCart = () => {
   return (

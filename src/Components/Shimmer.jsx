@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../CSS/Feed.scss";
+import "../SCSS/Feed.scss";
 
 const Shimmer = () => {
   const [loading, setloading] = useState(true);
