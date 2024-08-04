@@ -46,33 +46,31 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <div className="cart-items">
-        {groupedCartItems.length > 0 ? (
-          <div>
+      {groupedCartItems.length > 0 ? (
+        <div>
+          <div className="cart-header">
             <button className="clear-cart-button" onClick={handleClear}>
               Clear Cart
             </button>
             <h1>Cart Items: {cart.length}</h1>
+          </div>
+          <div>
             <MenuList card={{ itemCards: groupedCartItems }} />
           </div>
-        ) : (
-          <EmptyCart />
-        )}
-      </div>
-      {groupedCartItems.length > 0 && (
-        <div className="cart-summary">
           <div className="bill-details">
-            <h1>Bill</h1>
-            <p className="amount">₹{totalPrice.toFixed(2)}</p>
-            <h1>Delivery Fee</h1>
-            <p className="amount">₹{deliveryFee.toFixed(2)}</p>
-            <h1>Total Amount</h1>
-            <p className="amount">₹{totalAmount.toFixed(2)}</p>
+            <h1>Bill: ₹{totalPrice.toFixed(2)}</h1>
+            <h1>Delivery fee: ₹{deliveryFee.toFixed(2)}</h1>
+            <h1>Total Amount: ₹{totalAmount.toFixed(2)}</h1>
           </div>
-          <button className="payment-button" onClick={handlePaymentSuccess}>
-            Pay Now
-          </button>
+          <div className="payment-section">
+            <Payment
+              amount={totalAmount}
+              onPaymentSuccess={handlePaymentSuccess}
+            />
+          </div>
         </div>
+      ) : (
+        <EmptyCart />
       )}
     </div>
   );
