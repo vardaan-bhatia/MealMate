@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
-
   const cart = useSelector((store) => store.cart.items);
 
   const groupedCart = cart.reduce((acc, item) => {
@@ -46,24 +45,34 @@ const Cart = () => {
   };
 
   return (
-    <div className="help">
-      {groupedCartItems.length > 0 ? (
-        <center>
-          <button onClick={handleClear}>Clear Cart</button>
-          <h1>Cart Items: {cart.length}</h1>
+    <div className="cart-container">
+      <div className="cart-items">
+        {groupedCartItems.length > 0 ? (
           <div>
+            <button className="clear-cart-button" onClick={handleClear}>
+              Clear Cart
+            </button>
+            <h1>Cart Items: {cart.length}</h1>
             <MenuList card={{ itemCards: groupedCartItems }} />
           </div>
-          <h1>Bill: ₹{totalPrice.toFixed(2)}</h1>
-          <h1>Delivery fee: ₹{deliveryFee.toFixed(2)}</h1>
-          <h1>Total Amount: ₹{totalAmount.toFixed(2)}</h1>
-          <Payment
-            amount={totalAmount}
-            onPaymentSuccess={handlePaymentSuccess}
-          />
-        </center>
-      ) : (
-        <EmptyCart />
+        ) : (
+          <EmptyCart />
+        )}
+      </div>
+      {groupedCartItems.length > 0 && (
+        <div className="cart-summary">
+          <div className="bill-details">
+            <h1>Bill</h1>
+            <p className="amount">₹{totalPrice.toFixed(2)}</p>
+            <h1>Delivery Fee</h1>
+            <p className="amount">₹{deliveryFee.toFixed(2)}</p>
+            <h1>Total Amount</h1>
+            <p className="amount">₹{totalAmount.toFixed(2)}</p>
+          </div>
+          <button className="payment-button" onClick={handlePaymentSuccess}>
+            Pay Now
+          </button>
+        </div>
       )}
     </div>
   );
