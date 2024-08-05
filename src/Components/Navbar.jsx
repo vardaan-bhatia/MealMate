@@ -12,7 +12,7 @@ import SpeechRecognition, {
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
-
+  // const [msgState, setMsgState] = useState(true);
   const { showLocation, setShowLocation } = useContext(Visible);
   const { cityName } = useContext(CityLabel);
   const location = useLocation();
@@ -21,9 +21,11 @@ const Navbar = ({ onSearch }) => {
 
   const cart = useSelector((store) => store.cart.items);
 
-  const Searchfunction = (value) => {
-    onSearch(value);
+  const Searchfunction = () => {
+    onSearch(SearchText);
   };
+
+  // this will show the welcome msg for couple of seconds
 
   // useEffect(() => {
   //   let timer;
@@ -101,10 +103,7 @@ const Navbar = ({ onSearch }) => {
           <button className="search-mic" onClick={startListening}>
             <i className="fa-solid fa-microphone"></i>
           </button>
-          <button
-            className="glass listhov"
-            onClick={() => Searchfunction(SearchText)}
-          >
+          <button className="glass listhov" onClick={Searchfunction}>
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
           </button>
         </div>

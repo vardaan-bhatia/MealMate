@@ -14,8 +14,9 @@ const Contact = () => {
     const email = form.current.from_email.value.trim();
     const message = form.current.message.value.trim();
 
-    if (!name || !email || !message) {
-      toast.error("Please fill in all the details.");
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!name || !email || !message || !isValidEmail(email)) {
+      toast.error("Please provide valid details.");
       return;
     }
 

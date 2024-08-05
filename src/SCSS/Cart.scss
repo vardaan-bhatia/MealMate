@@ -7,14 +7,14 @@
 
   .cart-content {
     display: flex;
-    flex-wrap: wrap; // Allow items to wrap on smaller screens
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
   .cart-items {
     flex: 1;
-    min-width: 60%; // Ensure cart items section takes up at least 60%
-    margin-right: 20px; // Add some spacing between items and summary
+    min-width: 60%;
+    margin-right: 20px;
   }
 
   .cart-header {
@@ -60,7 +60,7 @@
   }
 
   .cart-summary {
-    flex: 0 1 300px; // Allow cart summary to shrink and take up a minimum width
+    flex: 0 1 300px;
     background-color: #f9f9f9;
     padding: 18px;
     border-radius: 8px;
@@ -80,16 +80,17 @@
     font-weight: bolder;
     text-decoration: underline;
   }
+
   .amt_details {
     margin-top: 15px;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
     gap: 20px;
     font-size: large;
     background-color: white;
     border: 2px dotted black;
     padding: 10px 20px;
-    color: black; /* Space between items */
+    color: black;
   }
 
   .payment-section {
@@ -103,19 +104,18 @@
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .cart-content {
     flex-direction: column;
   }
 
   .cart-items {
-    min-width: 100%; // Ensure full width on smaller screens
+    min-width: 100%;
     margin-right: 0;
   }
 
   .cart-summary {
     margin-top: 20px;
-    flex: none; // Reset flex properties on smaller screens
+    flex: none;
   }
 }
