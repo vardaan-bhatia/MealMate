@@ -67,6 +67,37 @@ const Location = ({ onClose }) => {
 
   fetchLatandLong();
 
+  const getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          setCordinates({ lat: latitude, lng: longitude });
+
+          try {
+            const response = await axios.get(
+              `https://us1.locationiq.com/v1/reverse.php?key=pk.20fe78dbf3ff4d3abda50a1f6d313beb&lat=${latitude}&lon=${longitude}&format=json`
+            );
+            const address = response.data.address || {};
+            const city =
+              address.city || address.town || address.village || "Unknown City";
+
+            setCityName(city);
+          } catch (error) {
+            console.log("Error fetching city details:", error);
+            setError("Failed to fetch city details.");
+          }
+        },
+        (error) => {
+          console.log("Error fetching location:", error);
+          setError("Unable to fetch current location.");
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by this browser.");
+    }
+  };
+
   return (
     <div className="location-container">
       <button className="close-btn" onClick={onClose}>
@@ -89,22 +120,28 @@ const Location = ({ onClose }) => {
         />
         {loading && <p>Loading...</p>}
         {error && <p className="error-message">{error}</p>}
-        <div className="location-list">
-          {cityList.length === 0 && <div>Search Location</div>}
+        <div className="location-list" onClick={onClose}>
+          {cityList.length === 0 && (
+            <button type="button" onClick={getGeoLocation}>
+              <span style={{ display: "flex", gap: "8px" }}>
+                <i class="fas fa-location"></i>
+                <h4>Get current location</h4>
+              </span>
+              <p>using GPS</p>
+            </button>
+          )}
           <ul>
             {cityList.map((e) => (
               <li
                 key={e.place_id}
                 onClick={() => fetchLatandLong(e.place_id)}
+                className="city-list"
                 style={{
                   borderBottom: "2px dotted #C7C8CC",
-                  margin: "20px",
-                  listStyle: "none",
-                  width: "400px",
                 }}
               >
                 <span style={{ display: "flex", gap: "5px" }}>
-                  <i class="fa-solid fa-location-dot"></i>
+                  <i className="fa-solid fa-location-dot"></i>
                   <h4>{e.structured_formatting.main_text}</h4>
                 </span>
                 <p>{e.structured_formatting.secondary_text}</p>

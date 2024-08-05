@@ -56,12 +56,23 @@ body {
   width: calc(100% - 2.5%);
   background-color: #ffffff;
   z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
 .logo-box {
   display: flex;
   align-items: center;
   margin-left: 2.5%;
+}
+
+.search-mic {
+  border: none;
+  font-size: larger;
+  margin-right: 10px;
+
+  &:hover {
+    color: #fc9037;
+  }
 }
 
 .logo-link {
@@ -98,6 +109,10 @@ body {
 .search-icon {
   font-size: larger;
   margin-right: 10px;
+
+  &:hover {
+    color: #fc9037;
+  }
 }
 
 .search-input {

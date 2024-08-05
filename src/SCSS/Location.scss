@@ -28,7 +28,28 @@
       color: #fc9037; /* Color on hover */
     }
   }
+  .city-list span h4 {
+    &:hover {
+      color: #fc9037;
+    }
+  }
+  .location-list button {
+    padding: 15px 50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+  }
+  .location-list button span h4 {
+    &:hover {
+      color: #fc9037;
+    }
+  }
 
+  .city-list {
+    list-style: none;
+    margin: 20px;
+    width: 400px;
+    border-bottom: 2px dotted #c7c8cc;
+  }
   .white-layout {
     align-items: center;
     display: flex;

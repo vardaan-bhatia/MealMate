@@ -5,6 +5,9 @@ import "../SCSS/Navbar.scss";
 import { useSelector } from "react-redux";
 import Location from "./Location";
 import { CityLabel, Visible } from "../utils/ContextLocation";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -13,11 +16,13 @@ const Navbar = ({ onSearch }) => {
   const { showLocation, setShowLocation } = useContext(Visible);
   const { cityName } = useContext(CityLabel);
   const location = useLocation();
+  const { transcript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
 
   const cart = useSelector((store) => store.cart.items);
 
-  const Searchfunction = () => {
-    onSearch(SearchText);
+  const Searchfunction = (value) => {
+    onSearch(value);
   };
 
   useEffect(() => {
@@ -50,7 +55,20 @@ const Navbar = ({ onSearch }) => {
   const handleCloseLocation = () => {
     setShowLocation(false); // Hide location on close button click
   };
-  const truncatedCityName = cityName.slice(0, 25);
+
+  useEffect(() => {
+    if (transcript) {
+      setSearchText(transcript);
+    }
+  }, [transcript]);
+
+  const startListening = () => {
+    SpeechRecognition.startListening({ continuous: false });
+  };
+
+  if (!browserSupportsSpeechRecognition) {
+    return <div>Your browser does not support speech recognition.</div>;
+  }
   return (
     <>
       <div className="header">
@@ -65,9 +83,9 @@ const Navbar = ({ onSearch }) => {
           </Link>
         </div>
         <div onClick={handleLocationClick} className="location">
-          <span className="city">{truncatedCityName}</span>{" "}
-          <span style={{ color: "red" }}>
-            <i class="fa-solid fa-location-dot"></i>
+          <span className="city">{cityName.slice(0, 25)}</span>{" "}
+          <span style={{ color: "#fc9037" }}>
+            <i className="fa-solid fa-location-dot"></i>
           </span>
         </div>
         {showLocation && <Location onClose={handleCloseLocation} />}{" "}
@@ -80,7 +98,13 @@ const Navbar = ({ onSearch }) => {
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={keypress}
           />
-          <button className="glass listhov" onClick={Searchfunction}>
+          <button className="search-mic" onClick={startListening}>
+            <i className="fa-solid fa-microphone"></i>
+          </button>
+          <button
+            className="glass listhov"
+            onClick={() => Searchfunction(SearchText)}
+          >
             <i className="fa-solid fa-magnifying-glass search-icon"></i>
           </button>
         </div>
