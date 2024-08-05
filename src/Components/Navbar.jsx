@@ -12,7 +12,7 @@ import SpeechRecognition, {
 const Navbar = ({ onSearch }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const [SearchText, setSearchText] = useState("");
-  const [msgState, setMsgState] = useState(true);
+
   const { showLocation, setShowLocation } = useContext(Visible);
   const { cityName } = useContext(CityLabel);
   const location = useLocation();
@@ -25,16 +25,16 @@ const Navbar = ({ onSearch }) => {
     onSearch(value);
   };
 
-  useEffect(() => {
-    let timer;
-    if (msgState) {
-      timer = setTimeout(() => {
-        setMsgState(false);
-      }, 10000); // Set msgState to false after 5 seconds
-    }
+  // useEffect(() => {
+  //   let timer;
+  //   if (msgState) {
+  //     timer = setTimeout(() => {
+  //       setMsgState(false);
+  //     }, 10000); // Set msgState to false after 5 seconds
+  //   }
 
-    return () => clearTimeout(timer);
-  }, [msgState]);
+  //   return () => clearTimeout(timer);
+  // }, [msgState]);
 
   const keypress = (e) => {
     if (e.key === "Enter") {
@@ -141,9 +141,7 @@ const Navbar = ({ onSearch }) => {
                     alt={user.name}
                     className="user-avatar"
                   />
-                  <span className="user-name">
-                    {msgState && "Welcome,"} {user.name}
-                  </span>
+                  <span className="user-name">{user.name}</span>
                   <button className="logout">Logout</button>
                 </>
               ) : (
