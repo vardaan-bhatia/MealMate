@@ -1,4 +1,5 @@
 import React from "react";
+import "../SCSS/Cart.scss";
 
 const Payment = ({ amount, onPaymentSuccess }) => {
   const handlePayment = () => {
@@ -37,7 +38,9 @@ const Payment = ({ amount, onPaymentSuccess }) => {
 
   return (
     <div>
-      <button onClick={handlePayment}>Pay ₹{amount.toFixed(2)}</button>
+      <button onClick={handlePayment} className="payment_button">
+        Proceed to pay
+      </button>
     </div>
   );
 };

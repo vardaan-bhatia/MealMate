@@ -59,7 +59,7 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
                         alt="Veg"
                       />
                     )}
-                    <h4>{c.card.info.name.slice(0, 36)}</h4>
+                    <h4>{c.card.info.name.slice(0, 25)}</h4>
                     <span className="price">
                       ₹
                       {Math.round(c.card.info.price / 100) ||

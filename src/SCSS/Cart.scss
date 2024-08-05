@@ -1,11 +1,21 @@
-/* Cart.scss */
-
 .cart-container {
   margin-top: 100px;
   padding: 20px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+
+  .cart-content {
+    display: flex;
+    flex-wrap: wrap; // Allow items to wrap on smaller screens
+    justify-content: space-between;
+  }
+
+  .cart-items {
+    flex: 1;
+    min-width: 60%; // Ensure cart items section takes up at least 60%
+    margin-right: 20px; // Add some spacing between items and summary
+  }
 
   .cart-header {
     text-align: center;
@@ -26,15 +36,38 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 
     &:hover {
       background-color: #f9872f;
     }
   }
 
+  .payment_button {
+    width: 150px;
+    padding: 10px 20px;
+    background-color: #0070e0;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 2px 5px black;
+
+    &:hover {
+      background-color: #267fd8;
+    }
+  }
+
   .cart-summary {
-    margin-top: 20px;
+    flex: 0 1 300px; // Allow cart summary to shrink and take up a minimum width
+    background-color: #f9f9f9;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    height: 350px;
+    margin-top: 90px;
 
     h1 {
       font-size: 20px;
@@ -42,17 +75,21 @@
     }
   }
 
-  .bill-details {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-
-    h1 {
-      font-size: 18px;
-      color: #444;
-    }
+  .summary {
+    font-size: larger;
+    font-weight: bolder;
+    text-decoration: underline;
+  }
+  .amt_details {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px;
+    font-size: large;
+    background-color: white;
+    border: 2px dotted black;
+    padding: 10px 20px;
+    color: black; /* Space between items */
   }
 
   .payment-section {
@@ -68,12 +105,17 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .cart-container {
-    padding: 10px;
+  .cart-content {
+    flex-direction: column;
+  }
 
-    .clear-cart-button {
-      width: 100%;
-      padding: 15px;
-    }
+  .cart-items {
+    min-width: 100%; // Ensure full width on smaller screens
+    margin-right: 0;
+  }
+
+  .cart-summary {
+    margin-top: 20px;
+    flex: none; // Reset flex properties on smaller screens
   }
 }

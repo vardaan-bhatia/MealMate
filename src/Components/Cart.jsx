@@ -40,33 +40,40 @@ const Cart = () => {
   const totalAmount = totalPrice + deliveryFee;
 
   const handlePaymentSuccess = () => {
-    dispatch(clearcart()); // Clear the cart upon successful payment
-    navigate("/success"); // Redirect to /success page
+    dispatch(clearcart());
+    navigate("/success");
   };
 
   return (
     <div className="cart-container">
       {groupedCartItems.length > 0 ? (
-        <div>
-          <div className="cart-header">
-            <button className="clear-cart-button" onClick={handleClear}>
-              Clear Cart
-            </button>
-            <h1>Cart Items: {cart.length}</h1>
+        <div className="cart-content">
+          <div className="cart-items">
+            <div className="cart-header">
+              <button className="clear-cart-button" onClick={handleClear}>
+                Clear Cart
+              </button>
+              <h1>Cart Items: {cart.length}</h1>
+            </div>
+            <div>
+              <MenuList card={{ itemCards: groupedCartItems }} />
+            </div>
           </div>
-          <div>
-            <MenuList card={{ itemCards: groupedCartItems }} />
-          </div>
-          <div className="bill-details">
-            <h1>Bill: ₹{totalPrice.toFixed(2)}</h1>
-            <h1>Delivery fee: ₹{deliveryFee.toFixed(2)}</h1>
-            <h1>Total Amount: ₹{totalAmount.toFixed(2)}</h1>
-          </div>
-          <div className="payment-section">
-            <Payment
-              amount={totalAmount}
-              onPaymentSuccess={handlePaymentSuccess}
-            />
+          <div className="cart-summary">
+            <div className="bill-details">
+              <h1 className="summary">BILL SUMMARY</h1>
+              <div className="amt_details">
+                <p>Amount: ₹{totalPrice.toFixed(2)}</p>
+                <p>Delivery fee: ₹{deliveryFee.toFixed(2)}</p>
+                <p>Total Amount: ₹{totalAmount.toFixed(2)}</p>
+              </div>
+            </div>
+            <div className="payment-section">
+              <Payment
+                onPaymentSuccess={handlePaymentSuccess}
+                amount={totalAmount}
+              />
+            </div>
           </div>
         </div>
       ) : (
