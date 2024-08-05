@@ -59,13 +59,19 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
                         alt="Veg"
                       />
                     )}
-                    <h4>{c.card.info.name}</h4>
+                    <h4>{c.card.info.name.slice(0, 36)}</h4>
                     <span className="price">
                       ₹
                       {Math.round(c.card.info.price / 100) ||
                         Math.round(c.card.info.defaultPrice / 100)}{" "}
                       {c.card.info.offerTags?.length > 0 && (
-                        <span className="offer-tag">
+                        <span
+                          style={{
+                            fontSize: "0.7em",
+                            color: "#fe9000",
+                            marginLeft: "3px",
+                          }}
+                        >
                           {`${c.card.info.offerTags[0].title || ""}
                         ${c.card.info.offerTags[0].subTitle || ""}`}
                         </span>
@@ -74,7 +80,13 @@ const MenuList = ({ card, bestSeller, showVeg, showNonVeg, showOffers }) => {
                   </div>
                   <p className="menu-item-description">
                     {c.card.info.ribbon?.text && (
-                      <span className="best-seller">
+                      <span
+                        style={{
+                          color: "#fe9000",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                        }}
+                      >
                         {c.card.info.ribbon.text} <br />
                       </span>
                     )}
