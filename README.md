@@ -4,9 +4,9 @@ MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant l
 
 ## **Important Note**
 
-<p>Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from <a href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar" target="_blank" rel="noopener noreferrer">this link</a>.</p>
+<p>Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from this <a href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar" target="_blank" rel="noopener noreferrer">Link.</a></p>
 
-<p>Check out the live demo of <a href="https://mealmatebyvardaan.vercel.app/" target="_blank" rel="noopener noreferrer">MealMate here</a>.</p>
+<p>Check out the live demo of <a href="https://mealmatebyvardaan.vercel.app/" target="_blank" rel="noopener noreferrer">MealMate here.</a></p>
 
 ## **Key Features**
 
