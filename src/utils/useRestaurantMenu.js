@@ -15,7 +15,7 @@ const useRestaurantMenu = (resid) => {
     const MenuFetch = async () => {
       try {
         const response = await axios.get(
-          `/api/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resid}`
+          `/api/menu?lat=${lat}&lng=${lng}&resid=${resid}`
         );
         const data = response.data.data;
         const resinfo = data?.cards?.[2]?.card?.card?.info || {};
