@@ -9,4 +9,13 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://mealmatebyvardaan.netlify.app/.netlify/functions",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 });
