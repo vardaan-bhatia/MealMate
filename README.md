@@ -1,45 +1,29 @@
-Here's the updated README with the CORS extension note moved to a top-level section:
-
 # **MealMate**
 
 MealMate is a feature-rich food delivery application with real-time restaurant data, dynamic menu filtering, and integrated payment options.
 
 ## **Important Note**
 
-Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from [this link](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar).
+Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from this [link](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar).
 
 ## **Key Features**
 
 **Dynamic Restaurant Listings:** Fetch and display restaurant details based on user location.
-
 **Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
-
 **Real-time Data:** Auto-fetch location data for nearby restaurants.
-
 **Cart Management:** Add, remove, and clear items in the cart with Redux integration.
-
 **Payment Integration:** Seamless payment options with Razorpay.
-
 **AI Integration:** Chat AI (Gemini) for enhanced user interaction.
-
 **Authentication:** Secure login using Auth0.
-
-**Location-based Services:** Utilize dynamic maps to fetch and display user location data.
 
 ## **Technologies Used**
 
-**Frontend:** React, SCSS
-
+**Frontend:** Reacta and SCSS
 **State Management:** Redux
-
 **Payment Gateway:** Razorpay
-
 **Authentication:** Auth0
-
-**AI Integration:** Chat AI (Gemini)
-
+**AI Integration:** Google Gemini
 **Map Integration:** Dynamic map locations
-
 **Data Storage:** LocalStorage for cart state
 
 Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/)
@@ -47,7 +31,6 @@ Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/
 ## **Installation & Prerequisites**
 
 **Node.js**
-
 **npm or yarn**
 
 ### Setup
@@ -92,6 +75,9 @@ yarn start
 ---
 
 ![image](https://github.com/user-attachments/assets/bd850edd-6816-4781-893b-2921d38dd15e)
+---
+
+![image](https://github.com/user-attachments/assets/36ad4cb9-c064-4514-91cc-5e15759ce1da)
 ---
 
 ![image](https://github.com/user-attachments/assets/c9a1f544-1fb6-4c38-8e72-9d6951ae7c82)
