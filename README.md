@@ -1,5 +1,3 @@
-Here is the revised README content with added line spaces for better readability:
-
 # **MealMate**
 
 MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant listings, customizable menus, and integrated payments. It provides an intuitive experience for ordering meals with dynamic location-based services and efficient cart management.
@@ -7,6 +5,8 @@ MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant l
 ## **Important Note**
 
 Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from [this link](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar).
+
+Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/)
 
 ## **Key Features**
 
@@ -41,8 +41,6 @@ Before accessing the application, you need to install a CORS extension to avoid 
 - **Map Integration:** Dynamic map locations
 
 - **Data Storage:** LocalStorage for cart state
-
-Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/)
 
 ## **Installation & Prerequisites**
 
@@ -81,9 +79,9 @@ REACT_APP_LOCATION_ID=your_location_id
 Start the development server:
 
 ```bash
-npm start
+npm run dev
 # or
-yarn start
+yarn dev
 ```
 
 ## **Screenshots**
