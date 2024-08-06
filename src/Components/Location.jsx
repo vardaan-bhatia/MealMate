@@ -76,7 +76,7 @@ const Location = ({ onClose }) => {
 
           try {
             const response = await axios.get(
-              `https://us1.locationiq.com/v1/reverse.php?key=pk.20fe78dbf3ff4d3abda50a1f6d313beb&lat=${latitude}&lon=${longitude}&format=json`
+              `https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LOCATION_KEY}&lat=${latitude}&lon=${longitude}&format=json`
             );
             const address = response.data.address || {};
             const city =
