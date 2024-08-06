@@ -16,7 +16,9 @@ const useRestaurantData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/data?lat=${lat}&lng=${lng}`);
+        const response = await axios.get(
+          `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+        );
         const data = response.data.data;
         const restaurants =
           data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
