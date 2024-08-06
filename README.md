@@ -1,6 +1,6 @@
 # **MealMate**
 
-MealMate is a feature-rich food delivery application with real-time restaurant data, dynamic menu filtering, and integrated payment options.
+MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant listings, customizable menus, and integrated payments. It provides an intuitive experience for ordering meals with dynamic location-based services and efficient cart management.
 
 ## **Important Note**
 
@@ -8,23 +8,25 @@ Before accessing the application, you need to install a CORS extension to avoid 
 
 ## **Key Features**
 
-**Dynamic Restaurant Listings:** Fetch and display restaurant details based on user location.
-**Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
-**Real-time Data:** Auto-fetch location data for nearby restaurants.
-**Cart Management:** Add, remove, and clear items in the cart with Redux integration.
-**Payment Integration:** Seamless payment options with Razorpay.
-**AI Integration:** Chat AI (Gemini) for enhanced user interaction.
-**Authentication:** Secure login using Auth0.
+-**Dynamic Restaurant Listings:** Fetch and display restaurant details based on user location.
+-**Speech Recognition:** Allow users to search for restaurants using speech recognition.
+-**Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
+-**Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
+-**Real-time Data:** Auto-fetch location data for nearby restaurants.
+-**Cart Management:** Add, remove, and clear items in the cart with Redux integration.
+-**Payment Integration:** Seamless payment options with Razorpay.
+-**AI Integration:** Chat AI (Gemini) for enhanced user interaction.
+-**Authentication:** Secure login using Auth0.
 
 ## **Technologies Used**
 
-**Frontend:** Reacta and SCSS
-**State Management:** Redux
-**Payment Gateway:** Razorpay
-**Authentication:** Auth0
-**AI Integration:** Google Gemini
-**Map Integration:** Dynamic map locations
-**Data Storage:** LocalStorage for cart state
+-**Frontend:** Reacta and SCSS
+-**State Management:** Redux
+-**Payment Gateway:** Razorpay
+-**Authentication:** Auth0
+-**AI Integration:** Google Gemini
+-**Map Integration:** Dynamic map locations
+-**Data Storage:** LocalStorage for cart state
 
 Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/)
 
