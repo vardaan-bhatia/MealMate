@@ -1,38 +1,53 @@
+Here is the revised README content with added line spaces for better readability:
+
 # **MealMate**
 
 MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant listings, customizable menus, and integrated payments. It provides an intuitive experience for ordering meals with dynamic location-based services and efficient cart management.
 
 ## **Important Note**
 
-Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from this [link](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar).
+Before accessing the application, you need to install a CORS extension to avoid any issues with CORS. You can add the extension from [this link](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en-US&utm_source=ext_sidebar).
 
 ## **Key Features**
 
--**Dynamic Restaurant Listings:** Fetch and display restaurant details based on user location.
--**Speech Recognition:** Allow users to search for restaurants using speech recognition.
--**Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
--**Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
--**Real-time Data:** Auto-fetch location data for nearby restaurants.
--**Cart Management:** Add, remove, and clear items in the cart with Redux integration.
--**Payment Integration:** Seamless payment options with Razorpay.
--**AI Integration:** Chat AI (Gemini) for enhanced user interaction.
--**Authentication:** Secure login using Auth0.
+- **Dynamic Restaurant Listings:** Fetch and display restaurant details based on user location.
+
+- **Speech Recognition:** Allow users to search for restaurants using speech recognition.
+
+- **Customizable Menu:** Filter menus by vegetarian, non-vegetarian, bestsellers, and offers.
+
+- **Real-time Data:** Auto-fetch location data for nearby restaurants.
+
+- **Cart Management:** Add, remove, and clear items in the cart with Redux integration.
+
+- **Payment Integration:** Seamless payment options with Razorpay.
+
+- **AI Integration:** Chat AI (Gemini) for enhanced user interaction.
+
+- **Authentication:** Secure login using Auth0.
 
 ## **Technologies Used**
 
--**Frontend:** Reacta and SCSS
--**State Management:** Redux
--**Payment Gateway:** Razorpay
--**Authentication:** Auth0
--**AI Integration:** Google Gemini
--**Map Integration:** Dynamic map locations
--**Data Storage:** LocalStorage for cart state
+- **Frontend:** React and SCSS
+
+- **State Management:** Redux
+
+- **Payment Gateway:** Razorpay
+
+- **Authentication:** Auth0
+
+- **AI Integration:** Google Gemini
+
+- **Map Integration:** Dynamic map locations
+
+- **Data Storage:** LocalStorage for cart state
 
 Check out the live demo of [MealMate here](https://mealmatebyvardaan.vercel.app/)
 
 ## **Installation & Prerequisites**
 
 **Node.js**
+
 **npm or yarn**
 
 ### Setup
@@ -93,12 +108,3 @@ yarn start
 
 ![image](https://github.com/user-attachments/assets/c4bb4bba-0740-4469-8599-5522ae8f9190)
 ---
-
-
-
-
-
-
-
-
-
