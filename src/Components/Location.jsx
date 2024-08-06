@@ -123,7 +123,7 @@ const Location = ({ onClose }) => {
         <div className="location-list" onClick={onClose}>
           {cityList.length === 0 && (
             <button type="button" onClick={getGeoLocation}>
-              <span style={{ display: "flex", gap: "8px" }}>
+              <span style={{ display: "flex", gap: "8px", cursor: "pointer" }}>
                 <i class="fas fa-location"></i>
                 <h4>Get current location</h4>
               </span>

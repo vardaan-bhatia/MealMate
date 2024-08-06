@@ -15,7 +15,7 @@ const useRestaurantMenu = (resid) => {
     const MenuFetch = async () => {
       try {
         const response = await axios.get(
-          `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resid}`
+          `/api/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=${resid}`
         );
         const data = response.data.data;
         const resinfo = data?.cards?.[2]?.card?.card?.info || {};
