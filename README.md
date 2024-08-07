@@ -31,7 +31,7 @@ MealMate is a Swiggy-inspired food delivery app featuring real-time restaurant l
 
 - **Frontend:** React and SCSS
 
-- **State Management:** Redux
+- **State Management:** Redux ToolKit
 
 - **Payment Gateway:** Razorpay
 
